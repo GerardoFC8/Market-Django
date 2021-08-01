@@ -5,13 +5,12 @@ from .models import Usuario, Producto
 # Create your views here.
 
 def index(response):
-    return HttpResponse("<style>body{background: #262626; color: #fff; font-size: 4rem;}</style><h1>INDEX</h1>")
+    return render(response, "mainCRUD/index.html", {})
 
-def home(response):
-    us = Usuario.objects.all()
-    pr = Producto.objects.all()
-    return HttpResponse("<style>body{background: #262626; color: #fff; font-size: 2rem;}</style>"
-                        "<h1>USUARIOS</h1>"
-                        "<h3>%s</h3>" 
-                        "<h1>PRODUCTOS</h1>"
-                        "<h3>%s</h3>" %(us[0], pr[0]))
+def usuario(response):
+    us = Usuario.objects.filter(usuario_estado=True)
+    return render(response, "mainCRUD/usuario.html", {"list_usuario": us})
+
+def producto(response):
+    prod = Producto.objects.all()
+    return render(response, "mainCRUD/producto.html", {"list_producto": prod})

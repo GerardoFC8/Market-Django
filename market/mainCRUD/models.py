@@ -21,7 +21,7 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.prod_nombre
-# Producto(prod_nombre="Platano", prod_categoria="viveres", prod_precio="3.50")
+# Producto(prod_nombre="Platano", prod_categoria="viveres", prod_precio="3.60")
 
 # SHELL
 # from mainCRUD.models import Usuario, Producto

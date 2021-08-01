@@ -1,0 +1,8 @@
+{% extends "mainCRUD/base.html" %}
+{% block titulo %} Usuario {% endblock %}
+
+{% block cuerpo %}
+    {% for i in list_usuario %}
+        <p>{{ i.usuario_nombre }}|{{ i.usuario_correo }}</p>
+    {% endfor %}
+{% endblock %}

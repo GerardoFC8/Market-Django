@@ -1,0 +1,8 @@
+{% extends "mainCRUD/base.html" %}
+{% block titulo %} Producto {% endblock %}
+
+{% block cuerpo %}
+    {% for i in list_producto %}
+        <p>{{ i.prod_nombre }}|{{ i.prod_precio }}</p>
+    {% endfor %}
+{% endblock %}
