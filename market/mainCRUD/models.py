@@ -20,8 +20,8 @@ class Producto(models.Model):
     prod_precio = models.FloatField(default=0.0)
 
     def __str__(self):
-        return self.prod_nombre
-# Producto(prod_nombre="Platano", prod_categoria="viveres", prod_precio="3.60")
+            return self.prod_nombre
+    # Producto(prod_nombre="Platano", prod_categoria="viveres", prod_precio="3.60")
 
 # SHELL
 # from mainCRUD.models import Usuario, Producto
