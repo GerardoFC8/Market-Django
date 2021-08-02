@@ -1,1 +1,17 @@
 {% extends "mainCRUD/base.html" %}
+
+{% block cuerpo %}
+    <h1>𝙎𝙀𝙉𝘼𝙏𝙄 𝙈𝘼𝙍𝙆𝙀𝙏</h1>
+    <table border="1">
+        <tbody>
+            {% for producto in list_producto %}
+            <tr>
+                <td>{{ producto.prod_nombre }}</td>
+                <td>{{ producto.prod_precio }}</td>
+                <td><a href="#">COMPRAR</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

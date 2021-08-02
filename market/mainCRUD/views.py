@@ -5,7 +5,8 @@ from .forms import UsuarioForm, ProductoForm
 # Create your views here.
 
 def index(request):
-    return render(request, "mainCRUD/index.html", {})
+    prod = Producto.objects.all()
+    return render(request, "mainCRUD/index.html", {"list_producto": prod})
 
 def usuario(request):
     us = Usuario.objects.filter(usuario_estado=True)
