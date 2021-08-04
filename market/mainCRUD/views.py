@@ -9,7 +9,7 @@ def index(request):
     return render(request, "mainCRUD/index.html", {"list_producto": prod})
 
 def usuario(request):
-    us = Usuario.objects.filter(usuario_estado=True)
+    us = Usuario.objects.filter(usuario_estado = True)
     context = {"list_usuario": us}
     return render(request, "mainCRUD/usuario.html", context)
 
@@ -53,7 +53,7 @@ def editar_usuario(request, id_usuario):
         form = UsuarioForm(instance = usuario)
 
     context = {'form' : form}
-    return render(request, 'mainCRUD/agregar_usu.html', context)
+    return render(request, 'mainCRUD/editar_usu.html', context)
 
 def eliminar_usuario(request, id_usuario):
     usuario = Usuario.objects.get(id = id_usuario)

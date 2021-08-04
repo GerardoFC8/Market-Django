@@ -1,5 +1,5 @@
 {% extends "mainCRUD/base.html" %}
-<title>{% block titulo %}Agregar Usuarios{% endblock %}</title>{% block cuerpo %}
+<title>{% block titulo %}Editar Usuarios{% endblock %}</title>{% block cuerpo %}
    
 <form method="post">
     {% csrf_token %}
@@ -7,7 +7,7 @@
     <label>Correo: {{form.usuario_correo}} </label> <br><br>
     <label>Contraseña: {{form.usuario_clave}} </label> <br><br>
     <label>Fecha de creacion: {{form.usuario_fecha}} </label> <br><br>
-
-    <button type='submit'>Agregar Usuario</button>
+    <label>Estado de Usuario: {{form.usuario_estado}} </label> <br><br>
+    <button type='submit'>Editar Usuario</button>
 </form>
 {% endblock cuerpo %}
