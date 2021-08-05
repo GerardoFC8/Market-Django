@@ -23,4 +23,12 @@
     </table>
     
     <button><a href='/agregar_usuario'>Agregar Usuario</a></button>
+
+    <br>
+    <h1>Administradores</h1>
+    {% for admins in form %}
+        {{ admins.username }}
+        {{ admins.email }}
+    {% endfor %}
+    
 {% endblock %}

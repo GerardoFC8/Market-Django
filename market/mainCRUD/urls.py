@@ -15,5 +15,5 @@ urlpatterns = [
     path("eliminar_producto/<int:id_producto>/", views.eliminar_producto, name="eliminar_producto"),
     path("register/", views.register, name='register'),
     path("login/", LoginView.as_view(template_name='mainCRUD/admin/login.html'), name='login'),
-    path("logout/", LoginView.as_view(template_name='mainCRUD/admin/logout.html'), name='logout'),
+    path("logout/", LogoutView.as_view(template_name='mainCRUD/admin/logout.html'), name='logout'),
 ]
