@@ -8,38 +8,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block titulo %}𝙈𝘼𝙍𝙆𝙀𝙏{% endblock %}</title>
-        <style type="text/css">
-            body{
-                background-color: #262626;
-                color: #fff;
-            }
-            .sidebar{
-                height: 100%;
-                width: 15%;
-                position: fixed;
-                z-index: 1;
-                top:0;
-                left: 0;
-                background-color: #171717;
-                overflow-x: hidden;
-                padding-top: 20px;
-            }
-            .sidebar a{
-                display: block;
-                padding: 0 0 0 20px;
-                text-decoration: none;
-                color: #fff;
-                font-size: 1.5rem;
-            }
-            .sidebar img{
-                width: 90%;
-                height: 10%;
-            }
-            .contenido{
-                margin-left: 18%;
-            }
-            
-        </style>
+
+        <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
     </head>
     <body>
         <div class="sidebar">
