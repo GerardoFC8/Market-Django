@@ -16,13 +16,13 @@
     <body>
     {#================= SIDEBAR =================#}
     <div class="sidebar">
-        <div align="center">
+        <div class="logo">
             <img src="{% static 'image/logo.png'%}" alt="logo">
         </div>
-        <a href="/home">Home</a>
-        <a href="/producto">Productos</a>
-        <a href="/usuario">Usuarios</a>
-        <a href="#">login</a>
+        <a href="/home" id="btn-home">Home</a>
+        <a href="/producto" id="btn-producto" >Productos</a>
+        <a href="/usuario" id="btn-usuario" >Usuarios</a>
+        <a href="#" id="btn-login" >login</a>
     </div>
     <div class="contenido">
         {% block cuerpo %}
@@ -30,5 +30,6 @@
             <img src="{% static 'image/logo.png'%}" alt="logo">
         {% endblock %}
     </div>
+    <script type="text/javascript" src="{% static 'js/sidebar_btn.js' %}"></script>
     </body>
 </html>

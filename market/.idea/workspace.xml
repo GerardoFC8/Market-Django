@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81ee3579-0264-4199-9dbe-aaac5a4f947a" name="Changes" comment="sidebar / static files added">
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/image/404.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/image/carrito.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/image/delivery.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/image/producto_prueba.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/image/search.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/image/tienda.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/js/sidebar_btn.js" afterDir="false" />
+    <list default="true" id="81ee3579-0264-4199-9dbe-aaac5a4f947a" name="Changes" comment="estilos pagina principal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainCRUD/static/css/base_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainCRUD/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/static/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainCRUD/static/js/sidebar_btn.js" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/static/js/sidebar_btn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628166559286</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="estilos pagina principal">
+      <created>1628180525843</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1628180525843</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +130,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="sidebar / static files added" />
     <MESSAGE value="static css added" />
-    <option name="LAST_COMMIT_MESSAGE" value="static css added" />
+    <MESSAGE value="estilos pagina principal" />
+    <option name="LAST_COMMIT_MESSAGE" value="estilos pagina principal" />
   </component>
 </project>

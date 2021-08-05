@@ -36,11 +36,18 @@ body{
     background-color: #333456;
     overflow-x: hidden;
     padding-top: 20px;
+    -webkit-box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.15);
+    box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.15);
+    transition: all 600ms;
 }
+
+.sidebar:hover{
+    -webkit-box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.25);
+    box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.25);
+}
+
 .sidebar a{
     display: block;
-    /*background-color: var(--botones);*/
-    /*border-radius: 50px;*/
     text-align: left;
     padding: 0 0 0 40px;
     text-decoration: none;
@@ -60,11 +67,16 @@ body{
     background-color: #b10450;
 }
 
-.sidebar img{
-    width: 90%;
-    height: 10%;
-    padding: 10px 0 20px 0;
-}
 .contenido{
     margin: 40px 0 0 18%;
+}
+
+.sidebar .logo{
+    display: grid;
+    place-items: center;
+}
+
+.sidebar .logo img{
+    width: 80%;
+    padding: 10px 0 20px 0;
 }
