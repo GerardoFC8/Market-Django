@@ -1,0 +1,17 @@
+{% extends 'mainCRUD/base.html'%}
+<title>{% block titulo %}Registrar{% endblock %}</title>
+{% block cuerpo %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Registrar</button>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+</form>
+
+{% endblock cuerpo %}
