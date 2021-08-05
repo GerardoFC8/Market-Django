@@ -1,6 +1,6 @@
 {% extends "mainCRUD/base.html" %}
 <title>{% block titulo %}Agregar Usuarios{% endblock %}</title>{% block cuerpo %}
-   
+
 <form method="post">
     {% csrf_token %}
     <label>Nombre: {{form.usuario_nombre}} </label> <br><br>

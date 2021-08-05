@@ -1,0 +1,13 @@
+{% extends 'mainCRUD/base.html'%}
+<title>{% block titulo %}Login{% endblock %}</title>
+{% block cuerpo %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Login</button>
+    <a href="/register">Registrate aqui</a>
+</form>
+
+{% endblock cuerpo %}

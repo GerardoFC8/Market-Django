@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Usuario, Producto
 from .forms import UsuarioForm, ProductoForm
+from .forms import UserRegisterForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -86,3 +88,17 @@ def eliminar_producto(request, id_producto):
     producto = Producto.objects.get(id = id_producto)
     producto.delete()
     return redirect('producto')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            messages.success(request, f'El usuario {username} fue creado correctamente.')
+            form.save()
+    else:
+        form = UserRegisterForm()
+
+    context = {'form' : form}
+    return render(request, 'mainCRUD/admin/register.html', context)
+
