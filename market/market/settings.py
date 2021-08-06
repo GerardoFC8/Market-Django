@@ -145,3 +145,13 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+
+#Url mediante la caul se va a acceder a las imagenes subidas
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#Ruta en donde quedan almacenadas las imagenes
+
+

@@ -75,10 +75,11 @@
             <!-- ========================= Producto ========================= -->
                 {% for producto in list_producto %}
                 <div class="producto">
+                    {% if producto.prod_imagen %}
                     <div class="contenedor_img_prod">
-                        <img src="{% static 'image/producto_prueba.jpg' %}" alt="imagen producto" class="img_prod" />
+                        <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
-
+                    {% endif %}
                     <div class="informacion_producto">
                         <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
 {#                        <h6 class="extra_prod">descripcion</h6>#}

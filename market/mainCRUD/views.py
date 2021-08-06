@@ -21,7 +21,6 @@ def producto(request):
     context = {"list_producto": prod}
     return render(request, "mainCRUD/producto.html", context)
 
-@login_required()
 @permission_required('mainCRUD.add_usuario')
 def agregar_usu(request):
     if request.method == 'POST':
@@ -35,11 +34,10 @@ def agregar_usu(request):
     context = {'form' : form}
     return render(request, 'mainCRUD/agregar_usu.html', context)
 
-@login_required()
 @permission_required('mainCRUD.add_producto')
 def agregar_prod(request):
     if request.method == 'POST':
-        form = ProductoForm(request.POST)
+        form = ProductoForm(request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             return redirect('producto')
@@ -49,7 +47,6 @@ def agregar_prod(request):
     context = {'form' : form}
     return render(request, 'mainCRUD/agregar_prod.html', context)
 
-@login_required()
 @permission_required('mainCRUD.change_usuario')
 def editar_usuario(request, id_usuario):
     usuario = Usuario.objects.get(id = id_usuario)
@@ -64,7 +61,6 @@ def editar_usuario(request, id_usuario):
     context = {'form' : form}
     return render(request, 'mainCRUD/editar_usu.html', context)
 
-@login_required()
 @permission_required('mainCRUD.delete_usuario')
 def eliminar_usuario(request, id_usuario):
     usuario = Usuario.objects.get(id = id_usuario)
@@ -79,12 +75,11 @@ def eliminar_usuario(request, id_usuario):
     context = {'form' : form}
     return render(request, 'mainCRUD/agregar_usu.html', context)
 
-@login_required()
 @permission_required('mainCRUD.change_producto')
 def editar_producto(request, id_producto):
     producto = Producto.objects.get(id = id_producto)
     if request.method == 'POST':
-        form = ProductoForm(request.POST, instance = producto)
+        form = ProductoForm(request.POST, instance = producto, files=request.FILES)
         if form.is_valid():
             form.save()
             return redirect('producto')
@@ -112,4 +107,3 @@ def register(request):
 
     context = {'form' : form}
     return render(request, 'mainCRUD/admin/register.html', context)
-

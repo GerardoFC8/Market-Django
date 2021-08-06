@@ -6,7 +6,6 @@ class Usuario(models.Model):
     usuario_estado = models.BooleanField(default=True)
     usuario_correo = models.CharField(max_length=250)
     usuario_clave = models.CharField(max_length=250)
-    usuario_fecha = models.DateField()
     #usuario_administrador = models.BooleanField(default=False)
 
     def __str__(self):
@@ -17,6 +16,8 @@ class Producto(models.Model):
     prod_nombre = models.CharField(max_length=500)
     prod_categoria = models.CharField(max_length=250)
     prod_precio = models.FloatField(default=0.0)
+    prod_descripcion = models.TextField(max_length=500)
+    prod_imagen = models.ImageField()
 
     def __str__(self):
         return self.prod_nombre
