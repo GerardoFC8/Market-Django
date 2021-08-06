@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Usuario, Producto
-from .forms import UsuarioForm, ProductoForm
+from .models import Producto
+from .forms import ProductoForm
 from .forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
@@ -11,28 +11,10 @@ def index(request):
     prod = Producto.objects.all()
     return render(request, "mainCRUD/index.html", {"list_producto": prod})
 
-def usuario(request):
-    us = Usuario.objects.filter(usuario_estado = True)
-    context = {"list_usuario": us}
-    return render(request, "mainCRUD/usuario.html", context)
-
 def producto(request):
     prod = Producto.objects.all()
     context = {"list_producto": prod}
     return render(request, "mainCRUD/producto.html", context)
-
-@permission_required('mainCRUD.add_usuario')
-def agregar_usu(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('usuario')
-    else:
-        form = UsuarioForm()
-
-    context = {'form' : form}
-    return render(request, 'mainCRUD/agregar_usu.html', context)
 
 @permission_required('mainCRUD.add_producto')
 def agregar_prod(request):
@@ -46,34 +28,6 @@ def agregar_prod(request):
         
     context = {'form' : form}
     return render(request, 'mainCRUD/agregar_prod.html', context)
-
-@permission_required('mainCRUD.change_usuario')
-def editar_usuario(request, id_usuario):
-    usuario = Usuario.objects.get(id = id_usuario)
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST, instance = usuario)
-        if form.is_valid():
-            form.save()
-            return redirect('usuario')
-    else:
-        form = UsuarioForm(instance = usuario)
-
-    context = {'form' : form}
-    return render(request, 'mainCRUD/editar_usu.html', context)
-
-@permission_required('mainCRUD.delete_usuario')
-def eliminar_usuario(request, id_usuario):
-    usuario = Usuario.objects.get(id = id_usuario)
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST, instance = usuario)
-        if form.is_valid():
-            form.save()
-            return redirect('usuario')
-    else:
-        form = UsuarioForm(instance = usuario)
-
-    context = {'form' : form}
-    return render(request, 'mainCRUD/agregar_usu.html', context)
 
 @permission_required('mainCRUD.change_producto')
 def editar_producto(request, id_producto):

@@ -1,11 +1,7 @@
 from django import forms
-from .models import Producto, Usuario
+from .models import Producto
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-class UsuarioForm(forms.ModelForm):
-    class Meta:
-        model = Usuario
-        fields = '__all__'
 
 class ProductoForm(forms.ModelForm):
     class Meta:
