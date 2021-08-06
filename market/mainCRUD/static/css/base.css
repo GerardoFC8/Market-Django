@@ -14,6 +14,7 @@
     /*--producto: #595B83;*/
     --producto: #333456;
     --producto_hover: #595B83;
+    --time-transition: 500ms ease;
 
 }
 
@@ -26,24 +27,42 @@ body{
     color: var(--blanco);
 }
 
+body::-webkit-scrollbar{
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track{
+    background: var(--producto);
+}
+
+body::-webkit-scrollbar-thumb{
+    background: var(--botones);
+}
+
 .sidebar{
-    height: 100%;
-    width: 15%;
+    height: 100vh;
+    width: 5%;
     position: fixed;
     z-index: 1;
+    margin: 0;
     top:0;
     left: 0;
     background-color: #333456;
     overflow-x: hidden;
     padding-top: 20px;
-    -webkit-box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.15);
-    box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.15);
+    -webkit-box-shadow: 7px 5px 23px 10px rgba(99, 74, 86, 0.07);
+    box-shadow: 7px 5px 23px 10px rgba(99, 74, 86, 0.07);
     transition: all 600ms;
 }
 
 .sidebar:hover{
-    -webkit-box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.25);
-    box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.25);
+    -webkit-box-shadow: 7px 5px 20px 5px rgba(193, 61, 105, 0.15);
+    box-shadow: 7px 5px 20px 5px rgba(193, 61, 105, 0.15);
+    width: 15%;
+}
+
+.sidebar:hover ~ .contenido{
+    margin: 40px 0 0 18%;
 }
 
 .sidebar a{
@@ -68,7 +87,8 @@ body{
 }
 
 .contenido{
-    margin: 40px 0 0 18%;
+    margin: 40px 0 0 8%;
+    transition: all 600ms ease;
 }
 
 .sidebar .logo{
@@ -77,6 +97,7 @@ body{
 }
 
 .sidebar .logo img{
-    width: 80%;
+    width: 170px;
     padding: 10px 0 20px 0;
+    outline: none;
 }
