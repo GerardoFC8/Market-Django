@@ -3,6 +3,7 @@ from .models import Usuario, Producto
 from .forms import UsuarioForm, ProductoForm
 from .forms import UserRegisterForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 
@@ -20,6 +21,8 @@ def producto(request):
     context = {"list_producto": prod}
     return render(request, "mainCRUD/producto.html", context)
 
+@login_required()
+@permission_required('mainCRUD.add_usuario')
 def agregar_usu(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -28,10 +31,12 @@ def agregar_usu(request):
             return redirect('usuario')
     else:
         form = UsuarioForm()
-        
+
     context = {'form' : form}
     return render(request, 'mainCRUD/agregar_usu.html', context)
 
+@login_required()
+@permission_required('mainCRUD.add_producto')
 def agregar_prod(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
@@ -44,6 +49,8 @@ def agregar_prod(request):
     context = {'form' : form}
     return render(request, 'mainCRUD/agregar_prod.html', context)
 
+@login_required()
+@permission_required('mainCRUD.change_usuario')
 def editar_usuario(request, id_usuario):
     usuario = Usuario.objects.get(id = id_usuario)
     if request.method == 'POST':
@@ -57,6 +64,8 @@ def editar_usuario(request, id_usuario):
     context = {'form' : form}
     return render(request, 'mainCRUD/editar_usu.html', context)
 
+@login_required()
+@permission_required('mainCRUD.delete_usuario')
 def eliminar_usuario(request, id_usuario):
     usuario = Usuario.objects.get(id = id_usuario)
     if request.method == 'POST':
@@ -70,7 +79,8 @@ def eliminar_usuario(request, id_usuario):
     context = {'form' : form}
     return render(request, 'mainCRUD/agregar_usu.html', context)
 
-
+@login_required()
+@permission_required('mainCRUD.change_producto')
 def editar_producto(request, id_producto):
     producto = Producto.objects.get(id = id_producto)
     if request.method == 'POST':
@@ -84,6 +94,7 @@ def editar_producto(request, id_producto):
     context = {'form' : form}
     return render(request, 'mainCRUD/agregar_prod.html', context)
 
+@permission_required('mainCRUD.delete_producto')
 def eliminar_producto(request, id_producto):
     producto = Producto.objects.get(id = id_producto)
     producto.delete()
