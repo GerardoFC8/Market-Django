@@ -9,6 +9,7 @@
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Opcion</th>
+                <th>asdas</th>
             </tr>
         </thead>
         <tbody>
@@ -17,18 +18,11 @@
                 <td>{{ user.usuario_nombre }}</td>
                 <td>{{ user.usuario_correo }}</td>
                 <td><a href="{% url 'editar_usuario' user.id %}">EDITAR</a> |  <a href="{% url 'editar_usuario' user.id %}">ELIMINAR</a></td>
+                <td>{{ user.usuario_administrador }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     
     <button><a href='/agregar_usuario'>Agregar Usuario</a></button>
-
-    <br>
-    <h1>Administradores</h1>
-    {% for admins in form %}
-        {{ admins.username }}
-        {{ admins.email }}
-    {% endfor %}
-    
 {% endblock %}

@@ -1,0 +1,797 @@
+Index: mainCRUD/templates/mainCRUD/base.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% load static %}\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"es\">\r\n    <head>\r\n        <link rel=\"shortcut icon\" href=\"{% static 'image/icono.ico' %}\">\r\n        <meta charset=\"UTF-8\" />\r\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n        <title>{% block titulo %}\uD835\uDE48\uD835\uDE3C\uD835\uDE4D\uD835\uDE46\uD835\uDE40\uD835\uDE4F{% endblock %}</title>\r\n\r\n        <link rel=\"stylesheet\" href=\"{% static 'css/base_style.css' %}\">\r\n    </head>\r\n    <body>\r\n        <div class=\"sidebar\">\r\n            <div align=\"center\">\r\n                <img src=\"{% static 'image/logo.png'%}\" alt=\"logo\">\r\n            </div>\r\n            <a href=\"/home\">Home</a>\r\n            <a href=\"/producto\">Productos</a>\r\n            <a href=\"/usuario\">Usuarios</a>\r\n            <a href=\"#\">login</a>\r\n        </div>\r\n        <div class=\"contenido\">\r\n            {% block cuerpo %}\r\n                base\r\n                <img src=\"{% static 'image/logo.png'%}\" alt=\"logo\">\r\n            {% endblock %}\r\n        </div>\r\n    </body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mainCRUD/templates/mainCRUD/base.html b/mainCRUD/templates/mainCRUD/base.html
+--- a/mainCRUD/templates/mainCRUD/base.html	(revision e80fa783628ed0faea7f48569dda308253ca6ac7)
++++ b/mainCRUD/templates/mainCRUD/base.html	(date 1628179896256)
+@@ -9,23 +9,26 @@
+         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         <title>{% block titulo %}𝙈𝘼𝙍𝙆𝙀𝙏{% endblock %}</title>
+ 
+-        <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
++        <link rel="stylesheet" href="{% static 'css/base.css' %}">
++        <link rel="stylesheet" href="{% block estilo %} {% endblock %}">
+     </head>
++
+     <body>
+-        <div class="sidebar">
+-            <div align="center">
+-                <img src="{% static 'image/logo.png'%}" alt="logo">
+-            </div>
+-            <a href="/home">Home</a>
+-            <a href="/producto">Productos</a>
+-            <a href="/usuario">Usuarios</a>
+-            <a href="#">login</a>
+-        </div>
+-        <div class="contenido">
+-            {% block cuerpo %}
+-                base
+-                <img src="{% static 'image/logo.png'%}" alt="logo">
+-            {% endblock %}
+-        </div>
++    {#================= SIDEBAR =================#}
++    <div class="sidebar">
++        <div align="center">
++            <img src="{% static 'image/logo.png'%}" alt="logo">
++        </div>
++        <a href="/home">Home</a>
++        <a href="/producto">Productos</a>
++        <a href="/usuario">Usuarios</a>
++        <a href="#">login</a>
++    </div>
++    <div class="contenido">
++        {% block cuerpo %}
++            base
++            <img src="{% static 'image/logo.png'%}" alt="logo">
++        {% endblock %}
++    </div>
+     </body>
+ </html>
+\ No newline at end of file
+Index: mainCRUD/templates/mainCRUD/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% extends \"mainCRUD/base.html\" %}\r\n\r\n{% block cuerpo %}\r\n    <h1>\uD835\uDE4E\uD835\uDE40\uD835\uDE49\uD835\uDE3C\uD835\uDE4F\uD835\uDE44 \uD835\uDE48\uD835\uDE3C\uD835\uDE4D\uD835\uDE46\uD835\uDE40\uD835\uDE4F</h1>\r\n    <table border=\"1\">\r\n        <tbody>\r\n            {% for producto in list_producto %}\r\n            <tr>\r\n                <td>{{ producto.prod_nombre }}</td>\r\n                <td>{{ producto.prod_precio }}</td>\r\n                <td><a href=\"#\">COMPRAR</a></td>\r\n            </tr>\r\n            {% endfor %}\r\n        </tbody>\r\n    </table>\r\n\r\n{% endblock %}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mainCRUD/templates/mainCRUD/index.html b/mainCRUD/templates/mainCRUD/index.html
+--- a/mainCRUD/templates/mainCRUD/index.html	(revision e80fa783628ed0faea7f48569dda308253ca6ac7)
++++ b/mainCRUD/templates/mainCRUD/index.html	(date 1628176743037)
+@@ -1,17 +1,104 @@
+ {% extends "mainCRUD/base.html" %}
++{% load static %}
++{% block estilo %} {% static 'css/index.css' %} {% endblock %}
+ 
+ {% block cuerpo %}
+-    <h1>𝙎𝙀𝙉𝘼𝙏𝙄 𝙈𝘼𝙍𝙆𝙀𝙏</h1>
+-    <table border="1">
+-        <tbody>
+-            {% for producto in list_producto %}
+-            <tr>
+-                <td>{{ producto.prod_nombre }}</td>
+-                <td>{{ producto.prod_precio }}</td>
+-                <td><a href="#">COMPRAR</a></td>
+-            </tr>
+-            {% endfor %}
+-        </tbody>
+-    </table>
++
++{#    <h1 class="titulo">𝙎𝙀𝙉𝘼𝙏𝙄 𝙈𝘼𝙍𝙆𝙀𝙏 𝙃𝙊𝙈𝙀𝙋𝘼𝙂𝙀</h1>#}
++{#    <hr>#}
++
++    <section class="bloque_seccion">
++        <div class="wrap">
++            <h1 class="titulo_seccion">titulo seccion</h1>
++
++            <div class="contenedor_productos">
++            <!-- ========================= Producto ========================= -->
++                {% for producto in list_producto %}
++                <div class="producto">
++                    <div class="contenedor_img_prod">
++                        <img src="{% static 'image/producto_prueba.jpg' %}" alt="imagen producto" class="img_prod" />
++                    </div>
++
++                    <div class="informacion_producto">
++                        <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
++{#                        <h6 class="extra_prod">descripcion</h6>#}
++                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
++                        <p class="precio_desc">S/.descuento</p>
++                    </div>
++
++                    <div class="envio_prod">
++                        <img src="{% static 'image/tienda.svg' %}" alt="tienda" class="lugar_prod icon" />
++                        <img src="{% static 'image/carrito.svg' %}" alt="carrito" class="delivery_prod icon" />
++                    </div>
++
++                    <div class="btn-container">
++                        <button class="custom-btn btn-compra"><span>Comprar</span></button>
++                    </div>
++                </div>
++                {% endfor %}
++
++
++                {% for producto in list_producto %}
++                <div class="producto">
++                    <div class="contenedor_img_prod">
++                        <img src="{% static 'image/producto_prueba.jpg' %}" alt="imagen producto" class="img_prod" />
++                    </div>
++
++                    <div class="informacion_producto">
++                        <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
++{#                        <h6 class="extra_prod">descripcion</h6>#}
++                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
++                        <p class="precio_desc">S/.descuento</p>
++                    </div>
++
++                    <div class="envio_prod">
++                        <img src="{% static 'image/tienda.svg' %}" alt="" class="lugar_prod icon" />
++                        <img src="{% static 'image/carrito.svg' %}" alt="" class="delivery_prod icon" />
++                    </div>
++
++                    <div class="btn-container">
++                        <button class="custom-btn btn-compra"><span>Comprar</span></button>
++                    </div>
++                </div>
++                {% endfor %}
++            <!-- ============================================================ -->
++            </div>
++        </div>
++    </section>
++
++
++    <section class="bloque_seccion">
++        <div class="wrap">
++            <h1 class="titulo_seccion">otra seccion</h1>
++
++            <div class="contenedor_productos">
++            <!-- ========================= Producto ========================= -->
++                {% for producto in list_producto %}
++                <div class="producto">
++                    <div class="contenedor_img_prod">
++                        <img src="{% static 'image/producto_prueba.jpg' %}" alt="imagen producto" class="img_prod" />
++                    </div>
++
++                    <div class="informacion_producto">
++                        <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
++{#                        <h6 class="extra_prod">descripcion</h6>#}
++                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
++                        <p class="precio_desc">S/.descuento</p>
++                    </div>
++
++                    <div class="envio_prod">
++                        <img src="{% static 'image/tienda.svg' %}" alt="" class="lugar_prod icon" />
++                        <img src="{% static 'image/carrito.svg' %}" alt="" class="delivery_prod icon" />
++                    </div>
++                    <div class="btn-container">
++                        <button class="custom-btn btn-compra"><span>Comprar</span></button>
++                    </div>
++{#                    <a href="{{ producto.id }}" class="boton_agregar">Comprar</a>#}
++                </div>
++                {% endfor %}
++            <!-- ============================================================ -->
++            </div>
++        </div>
++    </section>
+ 
+ {% endblock %}
+\ No newline at end of file
+Index: mainCRUD/static/css/base_style.css
+===================================================================
+diff --git a/mainCRUD/static/css/base_style.css b/mainCRUD/static/css/base_style.css
+deleted file mode 100644
+--- a/mainCRUD/static/css/base_style.css	(revision e80fa783628ed0faea7f48569dda308253ca6ac7)
++++ /dev/null	(revision e80fa783628ed0faea7f48569dda308253ca6ac7)
+@@ -1,29 +0,0 @@
+-body{
+-    background-color: #262626;
+-    color: #fff;
+-}
+-.sidebar{
+-    height: 100%;
+-    width: 15%;
+-    position: fixed;
+-    z-index: 1;
+-    top:0;
+-    left: 0;
+-    background-color: #171717;
+-    overflow-x: hidden;
+-    padding-top: 20px;
+-}
+-.sidebar a{
+-    display: block;
+-    padding: 0 0 0 20px;
+-    text-decoration: none;
+-    color: #fff;
+-    font-size: 1.5rem;
+-}
+-.sidebar img{
+-    width: 90%;
+-    height: 10%;
+-}
+-.contenido{
+-    margin-left: 18%;
+-}
+\ No newline at end of file
+Index: mainCRUD/static/css/base.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mainCRUD/static/css/base.css b/mainCRUD/static/css/base.css
+new file mode 100644
+--- /dev/null	(date 1628179934926)
++++ b/mainCRUD/static/css/base.css	(date 1628179934926)
+@@ -0,0 +1,70 @@
++@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
++
++*{
++	font-family: 'Mukta', sans-serif !important;
++}
++
++:root{
++    --base: #060930;
++    --color_texto: #b0d3ff;
++    /*--precio: ;*/
++    --blanco: #fff;
++    --botones: #f34981;
++    --botones_hover: #F4ABC4;
++    /*--producto: #595B83;*/
++    --producto: #333456;
++    --producto_hover: #595B83;
++
++}
++
++*:focus{
++    outline: none;
++}
++
++body{
++    background-color: var(--base);
++    color: var(--blanco);
++}
++
++.sidebar{
++    height: 100%;
++    width: 15%;
++    position: fixed;
++    z-index: 1;
++    top:0;
++    left: 0;
++    background-color: #333456;
++    overflow-x: hidden;
++    padding-top: 20px;
++}
++.sidebar a{
++    display: block;
++    /*background-color: var(--botones);*/
++    /*border-radius: 50px;*/
++    text-align: left;
++    padding: 0 0 0 40px;
++    text-decoration: none;
++    color: white;
++    text-transform: capitalize;
++    margin-top: 12px;
++    font-size: 25px;
++    font-weight: 800;
++    transition: all 600ms;
++}
++
++.sidebar a:hover{
++    background-color: var(--producto_hover);
++}
++
++.sidebar a:active{
++    background-color: #b10450;
++}
++
++.sidebar img{
++    width: 90%;
++    height: 10%;
++    padding: 10px 0 20px 0;
++}
++.contenido{
++    margin: 40px 0 0 18%;
++}
+\ No newline at end of file
+Index: mainCRUD/static/css/index.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mainCRUD/static/css/index.css b/mainCRUD/static/css/index.css
+new file mode 100644
+--- /dev/null	(date 1628179420919)
++++ b/mainCRUD/static/css/index.css	(date 1628179420919)
+@@ -0,0 +1,249 @@
++.bloque_seccion{
++    /*padding: 10px 0px;*/
++}
++
++.bloque_seccion .wrap{
++    width: 1200px;
++    /*margin: 0 auto;*/
++}
++
++.bloque_seccion .wrap .titulo_seccion{
++    font-size: 30px;
++    font-weight: 700;
++    text-transform: uppercase;
++    color: var(--blanco);
++    margin-bottom: 50px;
++}
++
++
++
++
++.contenedor_productos{
++    display: grid;
++    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
++    grid-gap: 25px;
++    transition: all 500ms ease;
++}
++
++.producto{
++    background-color: var(--producto);
++    padding: 12px;
++    border-radius: 10px;
++    cursor: pointer;
++    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
++    transition: all 500ms;
++}
++
++.producto:hover{
++    -webkit-box-shadow: #fff 0px -1px 4px,
++    var(--botones_hover) 0px -2px 10px,
++    var(--botones) 0px -10px 20px,
++    #b10450 0px -18px 40px,
++    5px 5px 15px 5px rgba(0,0,0,0);
++    box-shadow: #fff 0px -1px 4px,
++    var(--botones_hover) 0px -2px 10px,
++    var(--botones) 0px -10px 20px,
++    #b10450 0px -18px 40px,
++    5px 5px 15px 5px rgba(0,0,0,0);
++    /*box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);*/
++
++    /*-webkit-box-shadow: rgb(255, 128, 128) 5px 5px 15px 5px,*/
++    /*rgb(255, 228, 136) -9px 5px 15px 5px,*/
++    /*rgb(140, 255, 133) -7px -5px 15px 5px,*/
++    /*rgb(128, 199, 255) 12px -5px 15px 5px,*/
++    /*rgb(228, 136, 255) 12px 10px 15px 7px,*/
++    /*rgb(255, 97, 107) -10px 10px 15px 7px,*/
++    /*rgb(142, 92, 255) -10px -7px 27px 1px,*/
++    /*5px 5px 15px 5px rgba(0,0,0,0.37);*/
++    /*box-shadow: rgb(255, 128, 128) 5px 5px 15px 5px,*/
++    /*rgb(255, 228, 136) -9px 5px 15px 5px,*/
++    /*rgb(140, 255, 133) -7px -5px 15px 5px,*/
++    /*rgb(128, 199, 255) 12px -5px 15px 5px,*/
++    /*rgb(228, 136, 255) 12px 10px 15px 7px,*/
++    /*rgb(255, 97, 107) -10px 10px 15px 7px,*/
++    /*rgb(142, 92, 255) -10px -7px 27px 1px,*/
++    /*5px 5px 15px 5px rgba(0,0,0,0.37);*/
++
++    /*background-color: var(--producto_hover);*/
++}
++
++.contenedor_img_prod{
++    width: 100%;
++    height: 122px;
++    background: #fff;
++    border-radius: 10px;
++    margin-bottom: 20px;
++    display: flex;
++    justify-content: center;
++    align-items: center;
++    padding: 12px 0px;
++    overflow: hidden;
++}
++
++.contenedor_img_prod img{
++    width: 70%;
++    transition: all 800ms;
++}
++
++.contenedor_img_prod img:hover{
++    width: 100%;
++}
++
++.icon{
++    width: 20px;
++    padding: 0 0 20px 0;
++}
++
++.boton_agregar{
++    display: block;
++    background-color: var(--botones);
++    border-radius: 50px;
++    text-align: center;    padding: 10px;
++    text-decoration: none;
++    color: white;
++    text-transform: capitalize;
++    margin-top: 12px;
++    font-size: 15px;
++    transition: all 600ms;
++}
++
++.boton_agregar:hover{
++    background-color: var(--botones_hover);
++}
++
++
++
++
++.informacion_producto .nombre_prod{
++    color: var(--blanco);
++    font-weight: 600;
++    font-size: 19px;
++    margin-bottom: 3px;
++    text-transform: capitalize;
++}
++
++
++.informacion_producto .extra_prod{
++    color: var(--blanco);
++    font-size: 15px;
++    text-transform: capitalize;
++    margin-bottom: 20px;
++}
++
++.informacion_producto .precio_prod{
++    color: var(--botones);
++    margin-bottom: 5px;
++    font-size: 19px;
++}
++
++.informacion_producto .precio_desc{
++    font-size: 15px;
++    color: var(--botones_hover);
++    text-decoration: line-through;
++}
++
++.envio_prod{
++    display: flex;
++    margin-top: 20px;
++}
++
++.envio_prod img{
++    margin-right: 10px;
++}
++
++/*=================*/
++.btn-container{
++    display: grid;
++    place-items: center;
++    margin: 0 0 10px 0;
++}
++
++.custom-btn {
++    width: 130px;
++    height: 40px;
++    color: var(--blanco);
++    border-radius: 5px;
++    padding: 10px 25px;
++
++    text-transform: uppercase;
++    font-weight: 500;
++    background: transparent;
++    cursor: pointer;
++    transition: all 0.3s ease;
++    position: relative;
++    display: inline-block;
++    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
++    7px 7px 20px 0px rgba(0,0,0,.1),
++    4px 4px 5px 0px rgba(0,0,0,.1);
++    outline: none;
++}
++
++.btn-compra {
++    background: var(--botones);
++    width: 100%;
++    height: 40px;
++    line-height: 42px;
++    padding: 0;
++    border: none;
++
++}
++.btn-compra span {
++    position: relative;
++    display: block;
++    width: 100%;
++    height: 100%;
++}
++.btn-compra:before,
++.btn-compra:after {
++    position: absolute;
++    content: "";
++    right: 0;
++    top: 0;
++    background: var(--botones_hover);
++    transition: all 0.3s ease;
++}
++.btn-compra:before {
++    height: 0%;
++    width: 2px;
++}
++.btn-compra:after {
++    width: 0%;
++    height: 2px;
++}
++.btn-compra:hover{
++    background: transparent;
++    box-shadow: none;
++}
++.btn-compra:hover:before {
++    height: 100%;
++}
++.btn-compra:hover:after {
++    width: 100%;
++}
++.btn-compra span:hover{
++    color: var(--botones_hover);
++}
++.btn-compra span:before,
++.btn-compra span:after {
++    position: absolute;
++    content: "";
++    left: 0;
++    bottom: 0;
++    background: var(--botones_hover);
++    transition: all 0.3s ease;
++}
++.btn-compra span:before {
++    width: 2px;
++    height: 0%;
++}
++.btn-compra span:after {
++    width: 0%;
++    height: 2px;
++}
++.btn-compra span:hover:before {
++    height: 100%;
++}
++.btn-compra span:hover:after {
++    width: 100%;
++}
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"81ee3579-0264-4199-9dbe-aaac5a4f947a\" name=\"Changes\" comment=\"sidebar / static files added\">\r\n      <change afterPath=\"$PROJECT_DIR$/mainCRUD/static/css/base_style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/mainCRUD/templates/mainCRUD/base.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mainCRUD/templates/mainCRUD/base.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"DjangoConsoleOptions\" custom-start-script=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\">\r\n    <option name=\"myCustomStartScript\" value=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1wAzATrGCNOzkcoPYKxA3a4UCn8\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.updates\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"market\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\r\n      <module name=\"market\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\r\n      <option name=\"port\" value=\"8000\" />\r\n      <option name=\"host\" value=\"\" />\r\n      <option name=\"additionalOptions\" value=\"\" />\r\n      <option name=\"browserUrl\" value=\"\" />\r\n      <option name=\"runTestServer\" value=\"false\" />\r\n      <option name=\"runNoReload\" value=\"false\" />\r\n      <option name=\"useCustomRunCommand\" value=\"false\" />\r\n      <option name=\"customRunCommand\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"81ee3579-0264-4199-9dbe-aaac5a4f947a\" name=\"Changes\" comment=\"\" />\r\n      <created>1627916041994</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1627916041994</updated>\r\n      <workItem from=\"1627916043679\" duration=\"1831000\" />\r\n      <workItem from=\"1627918004188\" duration=\"97000\" />\r\n      <workItem from=\"1628166278116\" duration=\"131000\" />\r\n      <workItem from=\"1628166423130\" duration=\"100000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"sidebar / static files added\">\r\n      <created>1627917723745</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1627917723745</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"sidebar / static files added\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"sidebar / static files added\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e80fa783628ed0faea7f48569dda308253ca6ac7)
++++ b/.idea/workspace.xml	(date 1628179965194)
+@@ -1,10 +1,15 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="81ee3579-0264-4199-9dbe-aaac5a4f947a" name="Changes" comment="sidebar / static files added">
+-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/css/base_style.css" afterDir="false" />
++    <list default="true" id="81ee3579-0264-4199-9dbe-aaac5a4f947a" name="Changes" comment="static css added">
++      <change afterPath="$PROJECT_DIR$/mainCRUD/static/css/base.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/mainCRUD/static/css/index.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/mainCRUD/static/image/404.gif" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/mainCRUD/static/image/producto_prueba.jpg" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mainCRUD/static/css/base_style.css" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/base.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/index.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -14,6 +19,13 @@
+   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="CSS File" />
++      </list>
++    </option>
++  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+   </component>
+@@ -38,6 +50,7 @@
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="list.type.of.created.stylesheet" value="CSS" />
+     <property name="settings.editor.selected.configurable" value="preferences.updates" />
+   </component>
+   <component name="RunManager">
+@@ -76,7 +89,7 @@
+       <workItem from="1627916043679" duration="1831000" />
+       <workItem from="1627918004188" duration="97000" />
+       <workItem from="1628166278116" duration="131000" />
+-      <workItem from="1628166423130" duration="100000" />
++      <workItem from="1628166423130" duration="11681000" />
+     </task>
+     <task id="LOCAL-00001" summary="sidebar / static files added">
+       <created>1627917723745</created>
+@@ -85,7 +98,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1627917723745</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="static css added">
++      <created>1628166559286</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1628166559286</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -106,6 +126,7 @@
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+     <MESSAGE value="sidebar / static files added" />
+-    <option name="LAST_COMMIT_MESSAGE" value="sidebar / static files added" />
++    <MESSAGE value="static css added" />
++    <option name="LAST_COMMIT_MESSAGE" value="static css added" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: mainCRUD/static/js/sidebar_btn.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mainCRUD/static/js/sidebar_btn.js b/mainCRUD/static/js/sidebar_btn.js
+new file mode 100644
+--- /dev/null	(date 1628180255374)
++++ b/mainCRUD/static/js/sidebar_btn.js	(date 1628180255374)
+@@ -0,0 +1,1 @@
++var x = document.getElementsByClassName("example");
+\ No newline at end of file
+Index: mainCRUD/static/image/search.svg
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mainCRUD/static/image/search.svg b/mainCRUD/static/image/search.svg
+new file mode 100644
+--- /dev/null	(date 1617418786977)
++++ b/mainCRUD/static/image/search.svg	(date 1617418786977)
+@@ -0,0 +1,5 @@
++<svg xmlns="http://www.w3.org/2000/svg" height="136pt" version="1.1" viewBox="-1 0 136 136.21852" width="136pt">
++<g id="surface1">
++<path d="M 93.148438 80.832031 C 109.5 57.742188 104.03125 25.769531 80.941406 9.421875 C 57.851562 -6.925781 25.878906 -1.460938 9.53125 21.632812 C -6.816406 44.722656 -1.351562 76.691406 21.742188 93.039062 C 38.222656 104.707031 60.011719 105.605469 77.394531 95.339844 L 115.164062 132.882812 C 119.242188 137.175781 126.027344 137.347656 130.320312 133.269531 C 134.613281 129.195312 134.785156 122.410156 130.710938 118.117188 C 130.582031 117.980469 130.457031 117.855469 130.320312 117.726562 Z M 51.308594 84.332031 C 33.0625 84.335938 18.269531 69.554688 18.257812 51.308594 C 18.253906 33.0625 33.035156 18.269531 51.285156 18.261719 C 69.507812 18.253906 84.292969 33.011719 84.328125 51.234375 C 84.359375 69.484375 69.585938 84.300781 51.332031 84.332031 C 51.324219 84.332031 51.320312 84.332031 51.308594 84.332031 Z M 51.308594 84.332031 " style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1; fill: #FFFF !important;" />
++</g>
++</svg>
+\ No newline at end of file
+Index: mainCRUD/static/image/carrito.svg
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mainCRUD/static/image/carrito.svg b/mainCRUD/static/image/carrito.svg
+new file mode 100644
+--- /dev/null	(date 1617418675768)
++++ b/mainCRUD/static/image/carrito.svg	(date 1617418675768)
+@@ -0,0 +1,1 @@
++<svg style="fill: #FC427B !important;" height="512pt" viewBox="-3 0 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m494.929688 97.148438c-9.492188-10.84375-23.023438-16.816407-38.097657-16.816407h-364.429687l-3.667969-27.5c-3.953125-29.625-24.578125-52.832031-46.957031-52.832031h-26.777344c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h26.777344c4.8125 0 15.003906 10.175781 17.21875 26.796875l42.9375 322.039063c1.890625 14.195312 9.183594 27.484374 20.535156 37.421874 8.417969 7.371094 18.367188 12.273438 28.789062 14.324219-4.246093 7.808594-6.660156 16.753907-6.660156 26.25 0 30.421875 24.75 55.167969 55.167969 55.167969s55.167969-24.746094 55.167969-55.167969c0-9.0625-2.210938-17.613281-6.101563-25.164062h78.601563c-3.890625 7.550781-6.101563 16.101562-6.101563 25.164062 0 30.421875 24.75 55.167969 55.167969 55.167969s55.167969-24.746094 55.167969-55.167969c0-9.0625-2.210938-17.613281-6.101563-25.164062h39.300782c8.28125 0 15-6.71875 15-15 0-8.285157-6.71875-15-15-15h-302.589844c-14.65625 0-28.671875-12.273438-30.609375-26.800781l-3.136719-23.535157h116.746094c.003906 0 .007812.003907.011718.003907.003907 0 .007813-.003907.015626-.003907h96.367187c.003906 0 .007813.003907.015625.003907.003906 0 .003906-.003907.007812-.003907h83.003907c14.320312 0 28.457031-5.472656 39.808593-15.40625 11.351563-9.9375 18.644532-23.230469 20.535157-37.425781l21.515625-161.367188c1.992187-14.941406-2.136719-29.140624-11.628906-39.984374zm-269.996094 359.683593c0 13.878907-11.289063 25.167969-25.167969 25.167969-13.875 0-25.167969-11.289062-25.167969-25.167969 0-13.875 11.292969-25.164062 25.167969-25.164062 13.878906 0 25.167969 11.289062 25.167969 25.164062zm176.734375 0c0 13.878907-11.289063 25.167969-25.167969 25.167969s-25.167969-11.289062-25.167969-25.167969c0-13.875 11.289063-25.164062 25.167969-25.164062s25.167969 11.289062 25.167969 25.164062zm70.6875-339.921875c3.714843 4.242188 5.300781 10.011719 4.464843 16.253906l-9.019531 67.667969h-102.0625l6.03125-90.5h85.0625c6.300781 0 11.8125 2.335938 15.523438 6.578125zm-213.019531 204.421875-6.035157-90.5h80.371094l-6.035156 90.5zm-8.035157-120.5-6.03125-90.5h96.433594l-6.03125 90.5zm-36.097656-90.5 6.03125 90.5h-112.769531l-12.066406-90.5zm-102.738281 120.5h110.769531l6.035156 90.5h-104.738281zm312.234375 90.5h-66.996094l6.035156-90.5h100.0625l-8.492187 63.703125c-1.9375 14.527344-15.957032 26.796875-30.609375 26.796875zm0 0"/></svg>
+\ No newline at end of file
+Index: mainCRUD/static/image/tienda.svg
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/mainCRUD/static/image/tienda.svg b/mainCRUD/static/image/tienda.svg
+new file mode 100644
+--- /dev/null	(date 1617503445884)
++++ b/mainCRUD/static/image/tienda.svg	(date 1617503445884)
+@@ -0,0 +1,45 @@
++<?xml version="1.0" encoding="iso-8859-1"?>
++<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
++<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
++	 viewBox="0 0 376 376" style="enable-background:new 0 0 376 376; fill: #FC427B" xml:space="preserve">
++<g>
++	<g>
++		<path d="M336,44V12H32v32L0,156v18.336c0,16.68,9.896,31.544,24,38.968C24,262.696,24,364,24,364h64V236h64v128h192V216.56
++			c18.224-5.384,32-22.536,32-42.224V156L336,44z M44,202.336c-13.184,0-28-10.576-28-30.336h56C72,191.728,57.2,202.336,44,202.336
++			z M272,44l16,112c-31.384,0-32.968,0-56,0l-8-112H272z M288,172c0,19.6-14.688,30.336-28,30.336c-13.608,0-28-10.984-28-30.336
++			H288z M116,202.336c-13.184,0-28-10.576-28-30.336h56C144,191.728,129.2,202.336,116,202.336z M144,156c-22.256,0-25.392,0-56,0
++			l16-112h48L144,156z M160,172h56c0,19.728-14.8,30.336-28,30.336C174.816,202.336,160,191.76,160,172z M312,332H184v-96h128V332z
++			 M332,202.336c-13.608,0-28-10.984-28-30.336h56C360,191.6,345.312,202.336,332,202.336z"/>
++	</g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++</svg>
+Index: mainCRUD/static/image/delivery.svg
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/mainCRUD/static/image/delivery.svg b/mainCRUD/static/image/delivery.svg
+new file mode 100644
+--- /dev/null	(date 1617503437015)
++++ b/mainCRUD/static/image/delivery.svg	(date 1617503437015)
+@@ -0,0 +1,48 @@
++<?xml version="1.0" encoding="iso-8859-1"?>
++<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
++<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
++<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
++	 viewBox="0 0 462.522 462.522" style="enable-background:new 0 0 462.522 462.522; fill: #FC427B;" xml:space="preserve">
++<path d="M432.958,222.262c-1.452-0.305-2.823-0.592-4.042-0.909c-13.821-3.594-20.129-5.564-24.793-14.569l-17.667-35.768
++	c-5.678-10.961-20.339-19.879-32.682-19.879h-31.453v-41.303c0-7.416-6.034-13.45-13.452-13.45l-219.07,0.22
++	c-7.218,0-12.661,5.736-12.661,13.343v12.208H21.018C9.429,122.156,0,131.584,0,143.174s9.429,21.018,21.018,21.018h56.119v20.145
++	H40.394c-11.589,0-21.018,9.429-21.018,21.018s9.429,21.018,21.018,21.018h36.743v20.145H59.77
++	c-11.589,0-21.018,9.429-21.018,21.018s9.429,21.018,21.018,21.018h17.367v21.07c0,7.416,6.034,13.45,13.45,13.45h22.788
++	c3.549,24.323,24.542,43.064,49.837,43.064c25.297,0,46.291-18.741,49.841-43.064h92.224c0.479,0,0.97-0.032,1.46-0.064
++	c3.522,24.354,24.528,43.128,49.845,43.128c25.297,0,46.291-18.741,49.841-43.064h32.732c12.885,0,23.368-10.482,23.368-23.366
++	v-39.648C462.522,228.465,444.73,224.732,432.958,222.262z M356.582,297.46c10.1,0,18.317,8.214,18.317,18.311
++	s-8.217,18.311-18.317,18.311c-10.096,0-18.31-8.214-18.31-18.311S346.486,297.46,356.582,297.46z M322.321,219.414v-48.77h24.036
++	c9.238,0,20.634,6.932,24.864,15.094l15.721,31.829c0.333,0.644,0.679,1.258,1.038,1.846H322.321z M181.529,315.77
++	c0,10.096-8.217,18.311-18.317,18.311c-10.096,0-18.309-8.214-18.309-18.311s8.213-18.311,18.309-18.311
++	C173.312,297.46,181.529,305.674,181.529,315.77z"/>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++<g>
++</g>
++</svg>

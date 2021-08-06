@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81ee3579-0264-4199-9dbe-aaac5a4f947a" name="Changes" comment="sidebar / static files added">
-      <change afterPath="$PROJECT_DIR$/mainCRUD/static/css/base_style.css" afterDir="false" />
+    <list default="true" id="81ee3579-0264-4199-9dbe-aaac5a4f947a" name="Changes" comment="estilos pagina principal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainCRUD/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/static/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainCRUD/static/js/sidebar_btn.js" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/static/js/sidebar_btn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainCRUD/templates/mainCRUD/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,6 +14,13 @@
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -38,6 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
   <component name="RunManager">
@@ -76,7 +85,7 @@
       <workItem from="1627916043679" duration="1831000" />
       <workItem from="1627918004188" duration="97000" />
       <workItem from="1628166278116" duration="131000" />
-      <workItem from="1628166423130" duration="100000" />
+      <workItem from="1628166423130" duration="11681000" />
     </task>
     <task id="LOCAL-00001" summary="sidebar / static files added">
       <created>1627917723745</created>
@@ -85,7 +94,21 @@
       <option name="project" value="LOCAL" />
       <updated>1627917723745</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="static css added">
+      <created>1628166559286</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628166559286</updated>
+    </task>
+    <task id="LOCAL-00003" summary="estilos pagina principal">
+      <created>1628180525843</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1628180525843</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +129,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="sidebar / static files added" />
-    <option name="LAST_COMMIT_MESSAGE" value="sidebar / static files added" />
+    <MESSAGE value="static css added" />
+    <MESSAGE value="estilos pagina principal" />
+    <option name="LAST_COMMIT_MESSAGE" value="estilos pagina principal" />
   </component>
 </project>

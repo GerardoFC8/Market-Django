@@ -7,6 +7,7 @@ class Usuario(models.Model):
     usuario_correo = models.CharField(max_length=250)
     usuario_clave = models.CharField(max_length=250)
     usuario_fecha = models.DateField()
+    #usuario_administrador = models.BooleanField(default=False)
 
     def __str__(self):
         return self.usuario_nombre

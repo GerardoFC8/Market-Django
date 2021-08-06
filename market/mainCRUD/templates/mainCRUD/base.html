@@ -9,23 +9,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block titulo %}𝙈𝘼𝙍𝙆𝙀𝙏{% endblock %}</title>
 
-        <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% block estilo %} {% endblock %}">
     </head>
+
     <body>
-        <div class="sidebar">
-            <div align="center">
-                <img src="{% static 'image/logo.png'%}" alt="logo">
-            </div>
-            <a href="/home">Home</a>
-            <a href="/producto">Productos</a>
-            <a href="/usuario">Usuarios</a>
-            <a href="/login">login</a>
+    {#================= SIDEBAR =================#}
+    <div class="sidebar">
+        <div class="logo">
+            <img src="{% static 'image/logo.png'%}" alt="logo">
+
         </div>
-        <div class="contenido">
-            {% block cuerpo %}
-                base
-                <img src="{% static 'image/logo.png'%}" alt="logo">
-            {% endblock %}
-        </div>
+        {% if request.user.is_authenticated %}
+            <a href="#">{{ user.username }}</a>
+            <a href="/home" id="btn-home">Home</a>
+            <a href="/producto" id="btn-producto" >Productos</a>
+            <a href="/usuario" id="btn-usuario" >Usuarios</a>
+            <a href="/logout" id="btn-login" >Cerrar sesion</a>
+        {% else %}
+            <a href="/home" id="btn-home">Home</a>
+            <a href="/login" id="btn-login" >login</a>
+        {% endif %}
+    </div>
+    <div class="contenido">
+        {% block cuerpo %}
+            base
+            <img src="{% static 'image/logo.png'%}" alt="logo">
+        {% endblock %}
+    </div>
+    <script type="text/javascript" src="{% static 'js/sidebar_btn.js' %}"></script>
     </body>
 </html>

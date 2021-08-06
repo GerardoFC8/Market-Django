@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+*{
+	font-family: 'Mukta', sans-serif !important;
+}
+
+:root{
+    --base: #060930;
+    --color_texto: #b0d3ff;
+    /*--precio: ;*/
+    --blanco: #fff;
+    --botones: #f34981;
+    --botones_hover: #F4ABC4;
+    /*--producto: #595B83;*/
+    --producto: #333456;
+    --producto_hover: #595B83;
+
+}
+
+*:focus{
+    outline: none;
+}
+
+body{
+    background-color: var(--base);
+    color: var(--blanco);
+}
+
+.sidebar{
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top:0;
+    left: 0;
+    background-color: #333456;
+    overflow-x: hidden;
+    padding-top: 20px;
+    -webkit-box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.15);
+    box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.15);
+    transition: all 600ms;
+}
+
+.sidebar:hover{
+    -webkit-box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.25);
+    box-shadow: 7px 5px 23px 10px rgba(243,73,129,0.25);
+}
+
+.sidebar a{
+    display: block;
+    text-align: left;
+    padding: 0 0 0 40px;
+    text-decoration: none;
+    color: white;
+    text-transform: capitalize;
+    margin-top: 12px;
+    font-size: 25px;
+    font-weight: 800;
+    transition: all 600ms;
+}
+
+.sidebar a:hover{
+    background-color: var(--producto_hover);
+}
+
+.sidebar a:active{
+    background-color: #b10450;
+}
+
+.contenido{
+    margin: 40px 0 0 18%;
+}
+
+.sidebar .logo{
+    display: grid;
+    place-items: center;
+}
+
+.sidebar .logo img{
+    width: 80%;
+    padding: 10px 0 20px 0;
+}
