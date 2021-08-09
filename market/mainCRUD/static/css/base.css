@@ -100,6 +100,7 @@ main{
 
 .logo-main{
     width: 50px;
+    align-items: center;
 }
 
 .logo-imagen{
@@ -144,8 +145,9 @@ main{
 }
 
 .sidebar-container .logo{
-    display: grid;
-    place-items: center;
+    /*display: grid;*/
+    /*place-items: center;*/
+    margin: 0 0 0 .5rem;
 }
 
 .sidebar-container .logo{
@@ -155,7 +157,7 @@ main{
     height: 3rem;
 }
 .logo-imagen{
-
+    padding-top: 0.5rem;
 }
 
 .img-logout{
