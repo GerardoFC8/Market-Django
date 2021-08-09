@@ -11,7 +11,10 @@ switch(true) {
     btn_actual = document.getElementById("btn-home");
     btn_actual.style.backgroundColor = "#b10450";
     break;
-
+  case (url.indexOf("login") != -1):
+    btn_actual = document.getElementById("btn-login");
+    btn_actual.style.backgroundColor = "#b10450";
+    break;
 }
 
 // console.log(btn_actual);

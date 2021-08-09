@@ -15,28 +15,75 @@
 
     <body>
     {#================= SIDEBAR =================#}
-    <div class="sidebar">
-        <div class="logo">
-{#            <img class="logo-main" src="{% static 'image/logo_no_text.png'%}" alt="logo" >#}
-            <img class="logo-hover" src="{% static 'image/logo.png'%}" alt="logo">
+    <nav class="sidebar-container">
+        <ul class="sidebar">
+            <li class="nav-item-logo">
+                <div class="logo">
+                    <img class="logo-main" src="{% static 'image/logo_no_text.png'%}" alt="logo sin texto" width="50px">
+                    <img class="logo-imagen" src="{% static 'image/logo.png'%}" alt="logo" width="170px">
+                </div>
+            </li>
 
-        </div>
-        {% if request.user.is_authenticated %}
-            <a href="#">{{ user.username }}</a>
-            <a href="/home" id="btn-home">Home</a>
-            <a href="/producto" id="btn-producto" >Productos</a>
-            <a href="/logout" id="btn-login" >Cerrar sesion</a>
-        {% else %}
-            <a href="/home" id="btn-home">Home</a>
-            <a href="/login" id="btn-login" >login</a>
-        {% endif %}
-    </div>
-    <div class="contenido">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img class="img-search" src="{% static 'image/search.png'%}" alt="search">
+                    <input type="text" class="search" placeholder="Search">
+                </a>
+            </li>
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img class="img-profile" src="{% static 'image/profile.png'%}" alt="profile">
+                        <span class="link-text">{{ user.username }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/home" id="btn-home">
+                        <img class="img-home" src="{% static 'image/home.png' %}" alt="home">
+                        <span class="link-text">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/producto" id="btn-producto" >
+                        <img class="img-producto" src="{% static 'image/productos.png' %}" alt="productos">
+                        <span class="link-text">Productos</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" id="btn-login" >
+                        <img class="img-logout" src="{% static 'image/login.png' %}" alt="logout">
+                        <span class="link-text">Logout</span>
+                    </a>
+                </li>
+
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/home" id="btn-home">
+                        <img class="img-home" src="{% static 'image/home.png' %}" alt="home">
+                        <span class="link-text">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" id="btn-login" >
+                        <img class="img-login" src="{% static 'image/login.png' %}" alt="login">
+                        <span class="link-text">Login</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {#================= CONTENIDO =================#}
+    <main class="contenido">
         {% block cuerpo %}
             base
             <img src="{% static 'image/logo.png'%}" alt="logo">
         {% endblock %}
-    </div>
+    </main>
     <script type="text/javascript" src="{% static 'js/sidebar_btn.js' %}"></script>
     </body>
 </html>

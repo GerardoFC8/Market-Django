@@ -37,30 +37,6 @@
                 </div>
                 {% endfor %}
 
-
-                {% for producto in list_producto %}
-                <div class="producto">
-                    <div class="contenedor_img_prod">
-                        <img src="{% static 'image/producto_prueba.jpg' %}" alt="imagen producto" class="img_prod" />
-                    </div>
-
-                    <div class="informacion_producto">
-                        <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
-{#                        <h6 class="extra_prod">descripcion</h6>#}
-                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
-                        <p class="precio_desc">S/.descuento</p>
-                    </div>
-
-                    <div class="envio_prod">
-                        <img src="{% static 'image/tienda.svg' %}" alt="" class="lugar_prod icon" />
-                        <img src="{% static 'image/carrito.svg' %}" alt="" class="delivery_prod icon" />
-                    </div>
-
-                    <div class="btn-container">
-                        <button class="custom-btn btn-compra"><span>Comprar</span></button>
-                    </div>
-                </div>
-                {% endfor %}
             <!-- ============================================================ -->
             </div>
         </div>
@@ -97,7 +73,7 @@
 {#                    <a href="{{ producto.id }}" class="boton_agregar">Comprar</a>#}
                 </div>
                 {% endfor %}
-            <!-- ============================================================ -->
+{#            ============================================================  #}
             </div>
         </div>
     </section>

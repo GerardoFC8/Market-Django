@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
 
-*{
-	font-family: 'Mukta', sans-serif !important;
-}
-
 :root{
+	font-family: 'Mukta', sans-serif !important;
     --base: #060930;
     --color_texto: #b0d3ff;
     /*--precio: ;*/
@@ -14,7 +11,7 @@
     /*--producto: #595B83;*/
     --producto: #333456;
     --producto_hover: #595B83;
-    --time-transition: 500ms ease;
+    --time-transition: 200ms ease;
 
 }
 
@@ -39,65 +36,132 @@ body::-webkit-scrollbar-thumb{
     background: var(--botones);
 }
 
-.sidebar{
+main{
+    margin-left: 10rem;
+    transition: all 200ms ease;
+}
+
+.sidebar-container{
     height: 100vh;
-    width: 5%;
+    width: 6rem;
     position: fixed;
     z-index: 1;
     margin: 0;
     top:0;
     left: 0;
     background-color: #333456;
-    overflow-x: hidden;
-    padding-top: 20px;
+    overflow: hidden;
     -webkit-box-shadow: 7px 5px 23px 10px rgba(99, 74, 86, 0.07);
     box-shadow: 7px 5px 23px 10px rgba(99, 74, 86, 0.07);
-    transition: all 600ms;
+    transition: width 200ms ease;
 }
 
-.sidebar:hover{
+.sidebar{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    margin:0 0 0 1rem;
+}
+
+.sidebar-container:hover{
     -webkit-box-shadow: 7px 5px 20px 5px rgba(193, 61, 105, 0.15);
     box-shadow: 7px 5px 20px 5px rgba(193, 61, 105, 0.15);
-    width: 15%;
+    width: 15rem;
 }
 
-.sidebar:hover ~ .contenido{
-    margin: 40px 0 0 18%;
+.link-text{
+    transition: all 200ms;
+    display: none;
+    margin-left: 1rem;
+}
+.search{
+    display: none;
+    background-color: var(--base);
+    color: var(--blanco);
+    font-size: 20px;
+    border: none;
+    width: 100%;
+    margin-left: 1rem;
 }
 
-.sidebar a{
-    display: block;
-    text-align: left;
-    padding: 0 0 0 40px;
-    text-decoration: none;
+.sidebar-container:hover .search{
+    display: inline;
+}
+
+.sidebar-container:hover .link-text{
+    display: inline;
+}
+
+.sidebar-container:hover ~ main{
+    margin-left: 18rem;
+}
+
+.logo-main{
+    width: 50px;
+}
+
+.logo-imagen{
+    display: none;
+}
+
+.sidebar-container:hover .logo .logo-main{
+    display: none;
+}
+
+.sidebar-container:hover .logo .logo-imagen{
+    display: inline;
+}
+
+
+.nav-link{
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    transition: all 200ms;
     color: white;
+    border-radius: 10px;
+    text-decoration: none;
     text-transform: capitalize;
-    margin-top: 12px;
     font-size: 25px;
     font-weight: 800;
-    transition: all 600ms;
+    margin: 0 1rem 2rem 0;
+    padding: 0.5rem;
 }
 
-.sidebar a:hover{
+.nav-item:last-child {
+    margin-top: auto;
+}
+
+
+.sidebar-container a:hover{
     background-color: var(--producto_hover);
 }
 
-.sidebar a:active{
+.sidebar-container a:active{
     background-color: #b10450;
 }
 
-.contenido{
-    margin: 40px 0 0 8%;
-    transition: all 600ms ease;
-}
-
-.sidebar .logo{
+.sidebar-container .logo{
     display: grid;
     place-items: center;
 }
 
-.sidebar .logo img{
-    width: 170px;
-    padding: 10px 0 20px 0;
+.sidebar-container .logo{
+    padding: 1rem 0 1.5rem 0;
     outline: none;
+    margin-bottom: 1rem;
+    height: 3rem;
+}
+.logo-imagen{
+
+}
+
+.img-logout{
+    filter: invert(100%);
+    transform: rotate(180deg);
+}
+.img-login, .img-profile, .img-home, .img-producto, .img-search{
+    filter: invert(100%);
 }
