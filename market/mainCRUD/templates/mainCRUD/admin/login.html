@@ -1,4 +1,7 @@
-{% extends 'mainCRUD/base.html'%}
+{% extends "mainCRUD/base.html" %}
+{% load static %}
+{% block estilo %} {% static 'css/login.css' %} {% endblock %}
+
 <title>{% block titulo %}Login{% endblock %}</title>
 {% block cuerpo %}
 
