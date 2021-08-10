@@ -12,12 +12,10 @@ def index(request):
     prod = Producto.objects.filter(prod_categoria = 'EMBUTIDOS Y LACTEOS')
     return render(request, "mainCRUD/index.html", {"list_producto": prod})
 
-
 def producto(request):
     prod = Producto.objects.all()
     context = {"list_producto": prod}
     return render(request, "mainCRUD/producto.html", context)
-
 
 @permission_required('mainCRUD.add_producto')
 def agregar_prod(request):
