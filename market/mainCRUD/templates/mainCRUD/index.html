@@ -9,14 +9,14 @@
 
     <section class="bloque_seccion">
         <div class="wrap">
-            <h1 class="titulo_seccion">titulo seccion</h1>
+            <h1 class="titulo_seccion">EMBUTIDOS Y LACTEOS</h1>
 
             <div class="contenedor_productos">
             <!-- ========================= Producto ========================= -->
                 {% for producto in list_producto %}
                 <div class="producto">
                     <div class="contenedor_img_prod">
-                        <img src="{% static 'image/producto_prueba.jpg' %}" alt="imagen producto" class="img_prod" />
+                        <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
 
                     <div class="informacion_producto">
@@ -45,11 +45,117 @@
 
     <section class="bloque_seccion">
         <div class="wrap">
-            <h1 class="titulo_seccion">otra seccion</h1>
+            <h1 class="titulo_seccion">SNACKS Y PIQUEOS</h1>
 
             <div class="contenedor_productos">
             <!-- ========================= Producto ========================= -->
-                {% for producto in list_producto %}
+                {% for producto in list_productosnack %}
+                <div class="producto">
+                    {% if producto.prod_imagen %}
+                    <div class="contenedor_img_prod">
+                        <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
+                    </div>
+                    {% endif %}
+                    <div class="informacion_producto">
+                        <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
+{#                        <h6 class="extra_prod">descripcion</h6>#}
+                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
+                        <p class="precio_desc">S/.descuento</p>
+                    </div>
+
+                    <div class="envio_prod">
+                        <img src="{% static 'image/tienda.svg' %}" alt="" class="lugar_prod icon" />
+                        <img src="{% static 'image/carrito.svg' %}" alt="" class="delivery_prod icon" />
+                    </div>
+                    <div class="btn-container">
+                        <button class="custom-btn btn-compra"><span>Comprar</span></button>
+                    </div>
+{#                    <a href="{{ producto.id }}" class="boton_agregar">Comprar</a>#}
+                </div>
+                {% endfor %}
+{#            ============================================================  #}
+            </div>
+        </div>
+    </section>
+
+    <section class="bloque_seccion">
+        <div class="wrap">
+            <h1 class="titulo_seccion">CONFITERIA</h1>
+
+            <div class="contenedor_productos">
+            <!-- ========================= Producto ========================= -->
+                {% for producto in list_productosnack %}
+                <div class="producto">
+                    {% if producto.prod_imagen %}
+                    <div class="contenedor_img_prod">
+                        <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
+                    </div>
+                    {% endif %}
+                    <div class="informacion_producto">
+                        <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
+{#                        <h6 class="extra_prod">descripcion</h6>#}
+                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
+                        <p class="precio_desc">S/.descuento</p>
+                    </div>
+
+                    <div class="envio_prod">
+                        <img src="{% static 'image/tienda.svg' %}" alt="" class="lugar_prod icon" />
+                        <img src="{% static 'image/carrito.svg' %}" alt="" class="delivery_prod icon" />
+                    </div>
+                    <div class="btn-container">
+                        <button class="custom-btn btn-compra"><span>Comprar</span></button>
+                    </div>
+{#                    <a href="{{ producto.id }}" class="boton_agregar">Comprar</a>#}
+                </div>
+                {% endfor %}
+{#            ============================================================  #}
+            </div>
+        </div>
+    </section>
+
+    <section class="bloque_seccion">
+        <div class="wrap">
+            <h1 class="titulo_seccion">CONGELADOS</h1>
+
+            <div class="contenedor_productos">
+            <!-- ========================= Producto ========================= -->
+                {% for producto in list_productosnack %}
+                <div class="producto">
+                    {% if producto.prod_imagen %}
+                    <div class="contenedor_img_prod">
+                        <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
+                    </div>
+                    {% endif %}
+                    <div class="informacion_producto">
+                        <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
+{#                        <h6 class="extra_prod">descripcion</h6>#}
+                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
+                        <p class="precio_desc">S/.descuento</p>
+                    </div>
+
+                    <div class="envio_prod">
+                        <img src="{% static 'image/tienda.svg' %}" alt="" class="lugar_prod icon" />
+                        <img src="{% static 'image/carrito.svg' %}" alt="" class="delivery_prod icon" />
+                    </div>
+                    <div class="btn-container">
+                        <button class="custom-btn btn-compra"><span>Comprar</span></button>
+                    </div>
+{#                    <a href="{{ producto.id }}" class="boton_agregar">Comprar</a>#}
+                </div>
+                {% endfor %}
+{#            ============================================================  #}
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="bloque_seccion">
+        <div class="wrap">
+            <h1 class="titulo_seccion">BEBIDAS ALCOHOLICAS</h1>
+
+            <div class="contenedor_productos">
+            <!-- ========================= Producto ========================= -->
+                {% for producto in list_productosnack %}
                 <div class="producto">
                     {% if producto.prod_imagen %}
                     <div class="contenedor_img_prod">
