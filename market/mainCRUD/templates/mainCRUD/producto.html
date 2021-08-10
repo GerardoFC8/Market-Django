@@ -1,29 +1,37 @@
 {% extends "mainCRUD/base.html" %}
 {% block titulo %} Producto {% endblock %}
+{% load static %}
+{% block estilo %} {% static 'css/producto.css' %} {% endblock %}
 
 {% block cuerpo %}
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Producto</th>
-                <th>Categoria</th>
-                <th>Precio</th>
-                <th>Opcion</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for producto in list_producto %}
-            <tr>
-                <td>{{ producto.prod_nombre }}</td>
-                <td>{{ producto.prod_categoria }}</td>
-                <td>{{ producto.prod_precio }}</td>
-                <td><a href="{% url 'editar_producto' producto.id %}">EDITAR</a> | <a href="{% url 'eliminar_producto' producto.id %}">ELIMINAR</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-    <button><a href='/agregar_producto'>Agregar Producto</a></button>
-
+    <section class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Opcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in list_producto %}
+                <tr>
+                    <th>{{ producto.prod_nombre }}</th>
+                    <th>{{ producto.prod_precio }}</th>
+                    <th>
+                        <a href="{% url 'editar_producto' producto.id %}">
+                            <span>EDITAR</span>
+                        </a>
+                        <a href="{% url 'eliminar_producto' producto.id %}">
+                            <span>ELIMINAR</span>
+                        </a>
+                    </th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <div class="agregar-container">
+        <a  class="agregar_producto" href='/agregar_producto'>Agregar Producto</a>
+    </div>
 {% endblock %}

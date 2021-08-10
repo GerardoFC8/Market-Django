@@ -118,7 +118,7 @@
     color: var(--blanco);
     font-weight: 600;
     font-size: 19px;
-    margin-bottom: 3px;
+    margin: 0 0 3px 0;
     text-transform: capitalize;
 }
 
@@ -127,17 +127,18 @@
     color: var(--blanco);
     font-size: 15px;
     text-transform: capitalize;
-    margin-bottom: 20px;
+    margin: 0 0 3px 0;
 }
 
 .informacion_producto .precio_prod{
     color: var(--botones);
-    margin-bottom: 5px;
+    margin: 0 0 3px 0;
     font-size: 19px;
 }
 
 .informacion_producto .precio_desc{
     font-size: 15px;
+    margin: 0 0 3px 0;
     color: var(--botones_hover);
     text-decoration: line-through;
 }
