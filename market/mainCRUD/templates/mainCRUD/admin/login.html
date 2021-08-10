@@ -1,13 +1,41 @@
-{% extends 'mainCRUD/base.html'%}
+{% extends "mainCRUD/base.html" %}
+{% load static %}
+{% block estilo %} {% static 'css/login.css' %} {% endblock %}
+
 <title>{% block titulo %}Login{% endblock %}</title>
 {% block cuerpo %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
+<div class="container-all">
+    <div class="container-form">
+        <h1 class="titulo_Ini_Se">Login In</h1>
+        <br>
+        <form method="POST" action="">
+            <label></label>
+          {% csrf_token %}
+          {{ form.as_p }}
 
-    <button type="submit">Login</button>
-    <a href="/register">Registrate aqui</a>
-</form>
+          <button type="submit">Login</button>
+          <span class="text-footer">You have not yet registered?
+             <a href="/register">sign up here</a>
+          </span>
+        </form>
+    </div>
+    <div class="container-texto">
+        <div class="capa">
+            <h1 class="titulo-descripcion">WELCOME TO MARKET</h1>
+            <p class="text-description">
+            Where you can find all the products 
+            you need, with just one click.
+            </p>
+            <br>
+            <p class="text-description">
+            You can find products from: Groceries, 
+            Alcoholic Beverages, Snacks and snacks, 
+            Cleaning products.
+            </p>
+
+        </div>
+    </div>
+</div>
 
 {% endblock cuerpo %}

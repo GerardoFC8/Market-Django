@@ -1,14 +1,13 @@
-/*codigo de diego aqui*/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
 
-
-
+li{
+	color: #FC427B;
+}
 .container-all{
 	width: 70%;
 	max-width: 800px;
 	margin: auto;
-	margin-top: 200px;
+	margin-top: 100px;
 	display: flex;
 
 }
@@ -16,7 +15,7 @@
 .container-form{
 	width: 80%;
 	padding: 40px;
-	background: var(--blanco);
+	background: #f5f6fa;
 }
 
 .titulo_Ini_Se{
@@ -35,7 +34,8 @@ label{
 }
 
 .container-all input[type="text"],
-.container-all input[type="password"]{
+.container-all input[type="password"],
+.container-all input[type="email"]{
 	width: 100%;
 	height: 30px;
 	background: rgba(0,0,0,0);
@@ -65,7 +65,7 @@ button[type="submit"]:hover{
 
 .text-footer{
 	display: block;
-	margin-top: 100px;
+	margin-top: 30px;
 	text-align: center;
 	font-weight: 500;
 	color: #FC427B	;
@@ -75,7 +75,7 @@ button[type="submit"]:hover{
 
 .container-texto{
 	width: 80%;
-	background-image: url(../image/imagen-login.jpg);
+	background-image: url(../image/imagen-register.jpg);
 	background-position: center;
 	background-size: cover;
     padding: 40px;

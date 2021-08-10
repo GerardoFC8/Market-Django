@@ -1,17 +1,45 @@
 {% extends 'mainCRUD/base.html'%}
+{% load static %}
+{% block estilo %} {% static 'css/register.css' %} {% endblock %}
+
 <title>{% block titulo %}Registrar{% endblock %}</title>
 {% block cuerpo %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
+<div class="container-all">
+    <div class="container-form">
+        <h1 class="titulo_Ini_Se">Registrate</h1>
+        <br>
+        <form method="POST">
+            <label></label>
+           {% csrf_token %}
+           {{ form.as_p }}
 
-    <button type="submit">Registrar</button>
-    {% if messages %}
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    {% endif %}
-</form>
-<a href="{% url 'social:begin' 'facebook' %}">Login con facebook</a>
+           <button type="submit">Registrar</button>
+           {% if messages %}
+               {% for message in messages %}
+                  {{ message }}
+               {% endfor %}
+           {% endif %}
+        </form>
+        <br>
+        <a href="{% url 'social:begin' 'facebook' %}" class="text-footer">Login con facebook</a>
+    </div>
+    <div class="container-texto">
+        <div class="capa">
+            <h1 class="titulo-descripcion">WELCOME TO MARKET</h1>
+            <p class="text-description">
+            Where you can find all the products 
+            you need, with just one click.
+            </p>
+            <br>
+            <p class="text-description">
+            You can find products from: Groceries, 
+            Alcoholic Beverages, Snacks and snacks, 
+            Cleaning products.
+            </p>
+
+        </div>
+    </div>
+</div>
+
 {% endblock cuerpo %}
