@@ -11,7 +11,15 @@ from django.contrib.auth.decorators import login_required, permission_required
 def index(request):
     embutidos = Producto.objects.filter(prod_categoria = 'EMBUTIDOS Y LACTEOS')
     snacks = Producto.objects.filter(prod_categoria = 'SNACKS Y PIQUEOS')
-    return render(request, "mainCRUD/index.html", {"embutidos": embutidos, "snacks": snacks})
+    confiteria = Producto.objects.filter(prod_categoria = 'CONFITERIA')
+    congelados = Producto.objects.filter(prod_categoria = 'CONGELADOS')
+    alcohol = Producto.objects.filter(prod_categoria = 'BEBIDAS ALCOHOLICAS')
+    productos = {"embutidos": embutidos, 
+                "snacks": snacks,
+                "confiteria": confiteria,
+                "congelados": congelados,
+                "alcohol": alcohol}
+    return render(request, "mainCRUD/index.html", productos)
 
 def producto(request):
     prod = Producto.objects.all()
