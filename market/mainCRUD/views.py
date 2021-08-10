@@ -9,8 +9,9 @@ from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 
 def index(request):
-    prod = Producto.objects.filter(prod_categoria = 'EMBUTIDOS Y LACTEOS')
-    return render(request, "mainCRUD/index.html", {"list_producto": prod})
+    embutidos = Producto.objects.filter(prod_categoria = 'EMBUTIDOS Y LACTEOS')
+    snacks = Producto.objects.filter(prod_categoria = 'SNACKS Y PIQUEOS')
+    return render(request, "mainCRUD/index.html", {"embutidos": embutidos, "snacks": snacks})
 
 def producto(request):
     prod = Producto.objects.all()
