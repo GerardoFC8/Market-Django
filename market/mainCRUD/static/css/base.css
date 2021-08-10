@@ -82,8 +82,10 @@ main{
     color: var(--blanco);
     font-size: 20px;
     border: none;
+    border-radius: 8px;
     width: 100%;
     margin-left: 1rem;
+    padding: 1rem;
 }
 
 .sidebar-container:hover .search{
@@ -99,8 +101,9 @@ main{
 }
 
 .logo-main{
-    width: 50px;
+    width: 40px;
     align-items: center;
+    padding-top: 8px;
 }
 
 .logo-imagen{

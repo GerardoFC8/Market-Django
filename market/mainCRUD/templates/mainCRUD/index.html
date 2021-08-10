@@ -20,10 +20,10 @@
                     </div>
 
                     <div class="informacion_producto">
-                        <h5 class="nombre_prod">{{ producto.prod_nombre }}</h5>
-{#                        <h6 class="extra_prod">descripcion</h6>#}
+                        <h5 class="nombre_prod">{{ producto.prod_nombre|title }}</h5>
+                        <h6 class="extra_prod">descripcion</h6>
                         <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
-                        <p class="precio_desc">S/.descuento</p>
+                        <p class="precio_desc">S/.{{ producto.prod_precio }}</p>
                     </div>
 
                     <div class="envio_prod">
@@ -77,5 +77,4 @@
             </div>
         </div>
     </section>
-
 {% endblock %}

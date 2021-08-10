@@ -5,16 +5,19 @@ from .forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 
+
 # Create your views here.
 
 def index(request):
     prod = Producto.objects.all()
     return render(request, "mainCRUD/index.html", {"list_producto": prod})
 
+
 def producto(request):
     prod = Producto.objects.all()
     context = {"list_producto": prod}
     return render(request, "mainCRUD/producto.html", context)
+
 
 @permission_required('mainCRUD.add_producto')
 def agregar_prod(request):
@@ -25,29 +28,32 @@ def agregar_prod(request):
             return redirect('producto')
     else:
         form = ProductoForm()
-        
-    context = {'form' : form}
+
+    context = {'form': form}
     return render(request, 'mainCRUD/agregar_prod.html', context)
+
 
 @permission_required('mainCRUD.change_producto')
 def editar_producto(request, id_producto):
-    producto = Producto.objects.get(id = id_producto)
+    producto = Producto.objects.get(id=id_producto)
     if request.method == 'POST':
-        form = ProductoForm(request.POST, instance = producto, files=request.FILES)
+        form = ProductoForm(request.POST, instance=producto, files=request.FILES)
         if form.is_valid():
             form.save()
             return redirect('producto')
     else:
-        form = ProductoForm(instance = producto)
+        form = ProductoForm(instance=producto)
 
-    context = {'form' : form}
+    context = {'form': form}
     return render(request, 'mainCRUD/agregar_prod.html', context)
+
 
 @permission_required('mainCRUD.delete_producto')
 def eliminar_producto(request, id_producto):
-    producto = Producto.objects.get(id = id_producto)
+    producto = Producto.objects.get(id=id_producto)
     producto.delete()
     return redirect('producto')
+
 
 def register(request):
     if request.method == 'POST':
@@ -59,5 +65,5 @@ def register(request):
     else:
         form = UserRegisterForm()
 
-    context = {'form' : form}
+    context = {'form': form}
     return render(request, 'mainCRUD/admin/register.html', context)
