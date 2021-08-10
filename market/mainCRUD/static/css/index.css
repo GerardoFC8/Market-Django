@@ -20,7 +20,7 @@
 
 .contenedor_productos{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 25px;
     transition: all 500ms ease;
 }
