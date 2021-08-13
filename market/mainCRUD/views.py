@@ -37,6 +37,7 @@ def search(request):
     productos = {"result_set": result_set}
     return render(request, "mainCRUD/search.html", productos) 
 
+@login_required()
 def producto(request):
     prod = Producto.objects.all()
     context = {"list_producto": prod}
