@@ -26,15 +26,15 @@ def index(request):
 def search(request):
     queryset = request.GET.get("search")
     if queryset:
-        embutidos = Producto.objects.filter(
+        result_set = Producto.objects.filter(
             Q(prod_nombre__icontains = queryset) | 
             Q(prod_descripcion__icontains = queryset) |
             Q(prod_categoria__icontains = queryset)
         ).distinct()
     else:
-        embutidos = { }
+        result_set = { }
 
-    productos = {"embutidos": embutidos}
+    productos = {"result_set": result_set}
     return render(request, "mainCRUD/search.html", productos) 
 
 def producto(request):
