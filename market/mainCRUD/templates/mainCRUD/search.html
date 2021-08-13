@@ -9,7 +9,7 @@
 
             <div class="contenedor_productos">
             <!-- ========================= Producto ========================= -->
-                {% for producto in embutidos %}
+                {% for producto in result_set %}
                 <div class="producto">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
@@ -17,14 +17,13 @@
 
                     <div class="informacion_producto">
                         <h5 class="nombre_prod">{{ producto.prod_nombre|title }}</h5>
-                        <h6 class="extra_prod">descripcion</h6>
-                        <p> {{ producto.prod_descripcion }} </p>
+                        <h6 class="extra_prod">{{ producto.prod_descripcion }}</h6>
                         <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
                         <p class="precio_desc">S/.
                             <span id="{{ producto.id }}"></span>
                             <script type="text/javascript">
                                 function precio_inflado(precio){
-                                    return precio + (precio * 10 / 100);
+                                    return (precio + (precio * 10 / 100)).toFixed(2);
                                 }
                                 document.getElementById("{{ producto.id }}").innerHTML = precio_inflado({{ producto.prod_precio }})
                             </script>
