@@ -1,11 +1,25 @@
 {% extends "mainCRUD/base.html" %}
-<title>{% block titulo %}Agregar Productos{% endblock %}</title>{% block cuerpo %}
-   
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type='submit'>Agregar Producto</button>
-</form>
-{% endblock cuerpo %}
+{% load static %}
+{% block estilo %} {% static 'css/agregar_prod.css' %} {% endblock %}
+
+<title>{% block titulo %}Agregar Productos{% endblock %}</title>
+
+{% block cuerpo %}
+
+<div class="container-all">
+    <div class="container-form">
+        <h1 class="titulo_Ini_Se">Agregar Producto</h1>
+       <form method="post" enctype="multipart/form-data">
+        <label>
+          {% csrf_token %}
+          {{ form.as_p }}
+        </label>
+          <button type='submit'>Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock cuerpo %}       
 
 

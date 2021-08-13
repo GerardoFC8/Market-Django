@@ -1,16 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h2>Autenticacion</h2>
-    <form action="" method='post'></form>
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Login">
-</body>
-</html>
+{% extends "mainCRUD/base.html" %}
+{% load static %}
+{% block estilo %} {% static 'css/autentication.css' %} {% endblock %}
+
+<title>{% block titulo %}Autenticación{% endblock %}</title>
+{% block cuerpo %}
+
+<div class="container-all">
+    <div class="container-form">
+        <h1 class="titulo_Autentication">Autenticación</h1>
+        <br>
+        <form action="" method='post'>
+        <label></label>
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" value="Login">Login</button>
+        </form>
+    </div>
+    <div class="container-texto">
+        <div class="capa">
+            <h1 class="titulo-descripcion">WELCOME TO MARKET</h1>
+            <p class="text-description">
+            Where you can find all the products 
+            you need, with just one click.
+            </p>
+            <p class="text-description">
+            You can find products from: Groceries, 
+            Alcoholic Beverages, Snacks and snacks, 
+            Cleaning products.
+            </p>
+    </div>
+    </div>
+</div>
+
+{% endblock cuerpo %}
