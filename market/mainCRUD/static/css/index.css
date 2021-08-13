@@ -257,3 +257,12 @@
     width: 100%;
 }
 
+.travolta-padre{
+    display: grid;
+    place-items: center;
+}
+
+.travolta{
+    margin: auto;
+    width: 300%;
+}

@@ -6,10 +6,8 @@ li{
 .container-all{
 	width: 70%;
 	max-width: 800px;
-	margin: auto;
-	margin-top: 100px;
+	margin: 0 auto auto auto;
 	display: flex;
-
 }
 
 .container-form{
@@ -23,6 +21,7 @@ li{
 	margin-top: 20px;
 	font-weight: 300;
 	color: #273c75 ;
+	text-transform: capitalize;
 }
 
 label{
@@ -31,6 +30,7 @@ label{
 	margin-top: 30px;
 	font-size: 20px;
 	font-weight: 300;
+	text-transform: capitalize;
 }
 
 .container-all input[type="text"],

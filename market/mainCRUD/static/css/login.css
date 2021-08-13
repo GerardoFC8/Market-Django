@@ -1,14 +1,7 @@
-/*codigo de diego aqui*/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
-
-
-
-
 .container-all{
 	width: 70%;
 	max-width: 800px;
-	margin: auto;
-	margin-top: 200px;
+	margin: 5% auto auto auto;
 	display: flex;
 
 }

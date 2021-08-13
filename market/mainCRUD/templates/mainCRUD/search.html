@@ -39,6 +39,10 @@
                         <button class="custom-btn btn-compra" type="submit" href='#'><span>Comprar</span></button>
                     </div>
                 </div>
+                {% empty %}
+                <div class="travolta-padre">
+                    <img class="travolta" src="{% static 'image/404.gif' %}" alt="gif 404">
+                </div>
                 {% endfor %}
             <!-- ============================================================ -->
             </div>
