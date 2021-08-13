@@ -4,22 +4,38 @@ from .forms import ProductoForm
 from .forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
-
+from django.db.models import Q
 
 # Create your views here.
 
 def index(request):
+    
     embutidos = Producto.objects.filter(prod_categoria = 'EMBUTIDOS Y LACTEOS')
     snacks = Producto.objects.filter(prod_categoria = 'SNACKS Y PIQUEOS')
     confiteria = Producto.objects.filter(prod_categoria = 'CONFITERIA')
     congelados = Producto.objects.filter(prod_categoria = 'CONGELADOS')
     alcohol = Producto.objects.filter(prod_categoria = 'BEBIDAS ALCOHOLICAS')
-    productos = {"embutidos": embutidos, 
+
+    productos = {"embutidos": embutidos,
                 "snacks": snacks,
                 "confiteria": confiteria,
                 "congelados": congelados,
                 "alcohol": alcohol}
-    return render(request, "mainCRUD/index.html", productos)
+    return render(request, "mainCRUD/index.html", productos) 
+
+def search(request):
+    queryset = request.GET.get("search")
+    if queryset:
+        embutidos = Producto.objects.filter(
+            Q(prod_nombre__icontains = queryset) | 
+            Q(prod_descripcion__icontains = queryset) |
+            Q(prod_categoria__icontains = queryset)
+        ).distinct()
+    else:
+        embutidos = { }
+
+    productos = {"embutidos": embutidos}
+    return render(request, "mainCRUD/search.html", productos) 
 
 def producto(request):
     prod = Producto.objects.all()

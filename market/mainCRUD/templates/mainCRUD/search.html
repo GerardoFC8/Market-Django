@@ -1,0 +1,49 @@
+{% extends "mainCRUD/base.html" %}
+{% load static %}
+{% block estilo %} {% static 'css/index.css' %} {% endblock %}
+
+{% block cuerpo %}
+    <section class="bloque_seccion">
+        <div class="wrap">
+            <h1 class="titulo_seccion">RESULTADOS DE BUSQUEDA</h1>
+
+            <div class="contenedor_productos">
+            <!-- ========================= Producto ========================= -->
+                {% for producto in embutidos %}
+                <div class="producto">
+                    <div class="contenedor_img_prod">
+                        <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
+                    </div>
+
+                    <div class="informacion_producto">
+                        <h5 class="nombre_prod">{{ producto.prod_nombre|title }}</h5>
+                        <h6 class="extra_prod">descripcion</h6>
+                        <p> {{ producto.prod_descripcion }} </p>
+                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
+                        <p class="precio_desc">S/.
+                            <span id="{{ producto.id }}"></span>
+                            <script type="text/javascript">
+                                function precio_inflado(precio){
+                                    return precio + (precio * 10 / 100);
+                                }
+                                document.getElementById("{{ producto.id }}").innerHTML = precio_inflado({{ producto.prod_precio }})
+                            </script>
+                        </p>
+                    </div>
+
+                    <div class="envio_prod">
+                        <img src="{% static 'image/tienda.svg' %}" alt="tienda" class="lugar_prod icon" />
+                        <img src="{% static 'image/carrito.svg' %}" alt="carrito" class="delivery_prod icon" />
+                    </div>
+
+                    <div class="btn-container">
+                        <button class="custom-btn btn-compra" type="submit" href='#'><span>Comprar</span></button>
+                    </div>
+                </div>
+                {% endfor %}
+            <!-- ============================================================ -->
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

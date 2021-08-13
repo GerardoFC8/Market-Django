@@ -25,9 +25,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link">
                     <img class="img-search" src="{% static 'image/search.png'%}" alt="search">
-                    <input type="text" class="search" placeholder="Search">
+                    <form method="get" action="/search">
+                        <input type="text" class="search" placeholder="Search..." name="search" value="{{ request.GET.search }}">
+                    </form>
                 </a>
             </li>
             {% if request.user.is_authenticated %}

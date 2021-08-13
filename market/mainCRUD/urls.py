@@ -13,4 +13,5 @@ urlpatterns = [
     path("login/", LoginView.as_view(template_name='mainCRUD/admin/login.html'), name='login'),
     path("logout/", LogoutView.as_view(template_name='mainCRUD/admin/logout.html'), name='logout'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path("search/", views.search, name="search"),
 ]
