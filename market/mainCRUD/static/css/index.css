@@ -7,6 +7,19 @@
     /*margin: 0 auto;*/
 }
 
+.load-container{
+    position: relative;
+}
+
+#load-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 3;
+}
+
 .bloque_seccion .wrap .titulo_seccion{
     font-size: 30px;
     font-weight: 800;
@@ -38,6 +51,35 @@
     animation: intro_producto 300ms ease-out;
     animation-fill-mode: backwards;
 }
+
+.producto::before,
+.producto::after{
+    --scale: 0;
+    position: absolute;
+    z-index: 1;
+    top: -0.25rem;
+    left: 50%;
+    transform: translateX(50%) translateY(100px) scale(var(--scale));
+    transition: 120ms transform;
+    transform-origin: left;
+}
+
+.producto::before{
+    content: attr(data-tooltip);
+    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+    background-color: var(--producto_hover);
+    border-radius: 0.3rem;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 0;
+}
+
+.producto:hover::before{
+    --scale: 1;
+}
+
 @keyframes intro_producto {
     from{
         opacity: 0;

@@ -3,6 +3,25 @@
 {% block estilo %} {% static 'css/index.css' %} {% endblock %}
 
 {% block cuerpo %}
+    <div class="load-container">
+        <img src="{% static 'image/load.gif' %}" id="load-video" alt="load git">
+        <script type="text/javascript">
+            function fade(element) {
+                var op = 1;  // initial op
+                var timer = setInterval(function () {
+                    if (op <= 0.1){
+                        clearInterval(timer);
+                        element.style.display = 'none';
+                    }
+                    element.style.opacity = op;
+                    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                    op -= op * 0.2;
+                }, 150);
+            }
+            fade(document.getElementById("load-video"));
+        </script>
+    </div>
+
     <section class="bloque_seccion">
         <div class="wrap">
             <h1 class="titulo_seccion">EMBUTIDOS Y LACTEOS</h1>
@@ -10,7 +29,7 @@
             <div class="contenedor_productos">
             <!-- ========================= Producto ========================= -->
                 {% for producto in embutidos %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
@@ -60,7 +79,7 @@
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
                 {% for producto in snacks %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
@@ -107,7 +126,7 @@
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
                 {% for producto in confiteria %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
@@ -154,7 +173,7 @@
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
                 {% for producto in congelados %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
@@ -201,7 +220,7 @@
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
                 {% for producto in alcohol %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
