@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Producto
-from .forms import ProductoForm
+from .forms import ProductoForm, CorreoForm
 from .forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
@@ -91,3 +91,20 @@ def register(request):
 
     context = {'form': form}
     return render(request, 'mainCRUD/admin/register.html', context)
+
+def correo(request):
+    context = {
+        'form': CorreoForm()
+    }
+
+    if request.method == 'POST':
+
+        
+
+        form = CorreoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            context["mensaje"] = "Correo enviado correctamente"
+        else:
+            context["form"] = form
+    return render(request, 'mainCRUD/correo.html', context)

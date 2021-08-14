@@ -11,7 +11,13 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.prod_nombre
-    # Producto(prod_nombre="Platano", prod_categoria="viveres", prod_precio="3.60")
 
-    # SHELL a 
-# from mainCRUD.models import Usuario, Producto
+
+class Correo(models.Model):
+    nombre = models.CharField(max_length = 100)
+    correo = models.EmailField()
+    asunto = models.CharField(max_length = 200)
+    mensaje = models.TextField()
+
+    def __str__(self):
+        return self.nombre
