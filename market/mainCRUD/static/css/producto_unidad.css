@@ -1,0 +1,245 @@
+.wrap{
+    width: 100%;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 30px;
+}
+.contenedor_precio{
+    /*background: var(--producto);*/
+}
+
+.botonera input {
+    border: none;
+    transition: all 500ms ease;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.botonera input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.contenedor_imagen{
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.imagen-container{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    max-height: 300px;
+    cursor: zoom-in;
+}
+
+.img_mostrada{
+    transition: all 500ms ease;
+    width: 40%;
+    padding: 20px;
+}
+
+.img_mostrada:hover{
+    width: 1000%;
+}
+.contenedor_general{
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    grid-gap: 20px;
+    padding: 10%;
+    width: 70%;
+}
+
+
+.imagen_mostrar{
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: white;
+    width: 100%;
+}
+
+.imagen_mostrar img{
+    width: 40%;
+    margin: 30px 0px;
+}
+
+.contenedor_descripcion{
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    transition: all 500ms ease;
+    color: var(--blanco);
+    background: var(--producto);
+}
+
+.contenedor_descripcion .titulo_descripcion{
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--blanco);
+    transition: all 500ms ease;
+}
+
+.contenedor_descripcion p{
+    color: var(--blanco);
+    transition: all 500ms ease;
+}
+
+.precio{
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    transition: all 500ms ease;
+    background: var(--producto);
+}
+
+.titulo_producto{
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: var(--blanco);
+    transition: all 500ms ease;
+}
+
+.precio_producto{
+    font-size: 30px;
+    color: var(--blanco);
+    margin-bottom: 15px;
+    transition: all 500ms ease;
+}
+
+.botonera a{
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: var(--botones);
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.botonera a:last-child{
+    margin-bottom: 0;
+}
+
+#btn_agregar{
+    display: block;
+    padding: 18px;
+    border-radius: 8px;
+    background-color: var(--botones);
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+#btn_agregar:hover{
+    background-color: var(--producto_hover);
+    cursor: pointer;
+}
+
+#btn_agregar:last-child{
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 1200px){
+
+}
+
+@media screen and (max-width: 1024px){
+    .wrap{
+        width: 90%;
+        align-items: flex-start;
+    }
+
+    .contenedor_general{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+
+@media screen and (max-width: 600px){
+    .wrap{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contenedor_muestra{
+        display: none;
+    }
+}
+
+
+
+@media screen and (max-width: 500px){
+
+}
+
+#titulo_w_unidades{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.boton_unidades{
+    display: flex;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+.boton_disminuir_cant,
+.boton_aumentar_cant{
+    width: 20%;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 50px;
+}
+.boton_aumentar_cant:hover, .boton_disminuir_cant:hover{
+    background-color: var(--producto_hover);
+    transition: all 600ms ease;
+}
+.cantidad_cant{
+    background-color: var(--base);
+    color: var(--blanco);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    width: 40%;
+    margin: 0 5px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

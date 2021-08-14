@@ -3,6 +3,25 @@
 {% block estilo %} {% static 'css/index.css' %} {% endblock %}
 
 {% block cuerpo %}
+    <div class="load-container">
+        <img src="{% static 'image/load.gif' %}" id="load-video" alt="load git">
+        <script type="text/javascript">
+            function fade(element) {
+                var op = 1;  // initial op
+                var timer = setInterval(function () {
+                    if (op <= 0.1){
+                        clearInterval(timer);
+                        element.style.display = 'none';
+                    }
+                    element.style.opacity = op;
+                    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                    op -= op * 0.2;
+                }, 150);
+            }
+            fade(document.getElementById("load-video"));
+        </script>
+    </div>
+
     <section class="bloque_seccion">
         <div class="wrap">
             <h1 class="titulo_seccion">EMBUTIDOS Y LACTEOS</h1>
@@ -10,33 +29,44 @@
             <div class="contenedor_productos">
             <!-- ========================= Producto ========================= -->
                 {% for producto in embutidos %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
 
                     <div class="informacion_producto">
+                        <h6 class="categoria_prod">{{ producto.prod_categoria }}</h6>
                         <h5 class="nombre_prod">{{ producto.prod_nombre|title }}</h5>
-                        <h6 class="extra_prod">{{ producto.prod_descripcion }}</h6>
-                        <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
-                        <p class="precio_desc">S/.
+                        <p class="precio_prod">S/.
                             <span id="{{ producto.id }}"></span>
                             <script type="text/javascript">
                                 function precio_inflado(precio){
                                     return (precio + (precio * 10 / 100)).toFixed(2);
                                 }
-                                document.getElementById("{{ producto.id }}").innerHTML = precio_inflado({{ producto.prod_precio }})
+                                document.getElementById("{{ producto.id }}").innerHTML = precio_inflado({{ producto.prod_precio }});
                             </script>
+                        </p>
+                        <p class="precio_desc">S/.{{ producto.prod_precio }}
+                            <svg width="47" height="20" viewBox="0 0 47 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svgicon svgicon-price-tag">
+                                <path d="M47 16C47 18.2091 45.2091 20 43 20L10.0715 20C8.96282 20 7.90383 19.5398 7.14732 18.7293L1.54732 12.7293C0.11295 11.1924 0.11295 8.80755 1.54732 7.27072L7.14733 1.27072C7.90383 0.460183 8.96282 -3.32532e-06 10.0715 -3.22839e-06L43 -3.49691e-07C45.2091 -1.56562e-07 47 1.79086 47 4L47 16Z" fill="#019FE1">
+                                </path>
+                            </svg>
+                            <span class="porcentaje">-10%</span>
                         </p>
                     </div>
 
                     <div class="envio_prod">
                         <img src="{% static 'image/tienda.svg' %}" alt="tienda" class="lugar_prod icon" />
                         <img src="{% static 'image/carrito.svg' %}" alt="carrito" class="delivery_prod icon" />
+                        <img src="{% static 'image/delivery.svg' %}" alt="delivery" class="delivery_prod icon" />
                     </div>
 
                     <div class="btn-container">
-                        <button class="custom-btn btn-compra" ><span>Comprar</span></button>
+                        <div class="wrapp-btn">
+                            <form action="/producto_unidad/{{ producto.id }}">
+                                <button class="custom-btn btn-compra"><span>Comprar</span></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -49,14 +79,14 @@
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
                 {% for producto in snacks %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
 
                     <div class="informacion_producto">
+                        <h6 class="categoria_prod">{{ producto.prod_categoria }}</h6>
                         <h5 class="nombre_prod">{{ producto.prod_nombre|title }}</h5>
-                        <h6 class="extra_prod">{{ producto.prod_descripcion }}</h6>
                         <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
                         <p class="precio_desc">S/.
                             <span id="{{ producto.id }}"></span>
@@ -66,16 +96,26 @@
                                 }
                                 document.getElementById("{{ producto.id }}").innerHTML = precio_inflado({{ producto.prod_precio }})
                             </script>
+                            <svg width="47" height="20" viewBox="0 0 47 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svgicon svgicon-price-tag">
+                                <path d="M47 16C47 18.2091 45.2091 20 43 20L10.0715 20C8.96282 20 7.90383 19.5398 7.14732 18.7293L1.54732 12.7293C0.11295 11.1924 0.11295 8.80755 1.54732 7.27072L7.14733 1.27072C7.90383 0.460183 8.96282 -3.32532e-06 10.0715 -3.22839e-06L43 -3.49691e-07C45.2091 -1.56562e-07 47 1.79086 47 4L47 16Z" fill="#019FE1">
+                                </path>
+                            </svg>
+                            <span class="porcentaje">-10%</span>
                         </p>
                     </div>
 
                     <div class="envio_prod">
                         <img src="{% static 'image/tienda.svg' %}" alt="tienda" class="lugar_prod icon" />
                         <img src="{% static 'image/carrito.svg' %}" alt="carrito" class="delivery_prod icon" />
+                        <img src="{% static 'image/delivery.svg' %}" alt="delivery" class="delivery_prod icon" />
                     </div>
 
                     <div class="btn-container">
-                        <button class="custom-btn btn-compra" href='#'><span>Comprar</span></button>
+                        <div class="wrapp-btn">
+                            <form action="/producto_unidad/{{ producto.id }}">
+                                <button class="custom-btn btn-compra"><span>Comprar</span></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -86,14 +126,14 @@
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
                 {% for producto in confiteria %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
 
                     <div class="informacion_producto">
+                        <h6 class="categoria_prod">{{ producto.prod_categoria }}</h6>
                         <h5 class="nombre_prod">{{ producto.prod_nombre|title }}</h5>
-                        <h6 class="extra_prod">{{ producto.prod_descripcion }}</h6>
                         <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
                         <p class="precio_desc">S/.
                             <span id="{{ producto.id }}"></span>
@@ -103,16 +143,26 @@
                                 }
                                 document.getElementById("{{ producto.id }}").innerHTML = precio_inflado({{ producto.prod_precio }})
                             </script>
+                            <svg width="47" height="20" viewBox="0 0 47 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svgicon svgicon-price-tag">
+                                <path d="M47 16C47 18.2091 45.2091 20 43 20L10.0715 20C8.96282 20 7.90383 19.5398 7.14732 18.7293L1.54732 12.7293C0.11295 11.1924 0.11295 8.80755 1.54732 7.27072L7.14733 1.27072C7.90383 0.460183 8.96282 -3.32532e-06 10.0715 -3.22839e-06L43 -3.49691e-07C45.2091 -1.56562e-07 47 1.79086 47 4L47 16Z" fill="#019FE1">
+                                </path>
+                            </svg>
+                            <span class="porcentaje">-10%</span>
                         </p>
                     </div>
 
                     <div class="envio_prod">
                         <img src="{% static 'image/tienda.svg' %}" alt="tienda" class="lugar_prod icon" />
                         <img src="{% static 'image/carrito.svg' %}" alt="carrito" class="delivery_prod icon" />
+                        <img src="{% static 'image/delivery.svg' %}" alt="delivery" class="delivery_prod icon" />
                     </div>
 
                     <div class="btn-container">
-                        <button class="custom-btn btn-compra" href='#'><span>Comprar</span></button>
+                        <div class="wrapp-btn">
+                            <form action="/producto_unidad/{{ producto.id }}">
+                                <button class="custom-btn btn-compra"><span>Comprar</span></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -123,14 +173,14 @@
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
                 {% for producto in congelados %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
 
                     <div class="informacion_producto">
+                        <h6 class="categoria_prod">{{ producto.prod_categoria }}</h6>
                         <h5 class="nombre_prod">{{ producto.prod_nombre|title }}</h5>
-                        <h6 class="extra_prod">{{ producto.prod_descripcion }}</h6>
                         <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
                         <p class="precio_desc">S/.
                             <span id="{{ producto.id }}"></span>
@@ -140,16 +190,26 @@
                                 }
                                 document.getElementById("{{ producto.id }}").innerHTML = precio_inflado({{ producto.prod_precio }})
                             </script>
+                            <svg width="47" height="20" viewBox="0 0 47 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svgicon svgicon-price-tag">
+                                <path d="M47 16C47 18.2091 45.2091 20 43 20L10.0715 20C8.96282 20 7.90383 19.5398 7.14732 18.7293L1.54732 12.7293C0.11295 11.1924 0.11295 8.80755 1.54732 7.27072L7.14733 1.27072C7.90383 0.460183 8.96282 -3.32532e-06 10.0715 -3.22839e-06L43 -3.49691e-07C45.2091 -1.56562e-07 47 1.79086 47 4L47 16Z" fill="#019FE1">
+                                </path>
+                            </svg>
+                            <span class="porcentaje">-10%</span>
                         </p>
                     </div>
 
                     <div class="envio_prod">
                         <img src="{% static 'image/tienda.svg' %}" alt="tienda" class="lugar_prod icon" />
                         <img src="{% static 'image/carrito.svg' %}" alt="carrito" class="delivery_prod icon" />
+                        <img src="{% static 'image/delivery.svg' %}" alt="delivery" class="delivery_prod icon" />
                     </div>
 
                     <div class="btn-container">
-                        <button class="custom-btn btn-compra" href='#'><span>Comprar</span></button>
+                        <div class="wrapp-btn">
+                            <form action="/producto_unidad/{{ producto.id }}">
+                                <button class="custom-btn btn-compra"><span>Comprar</span></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -160,14 +220,14 @@
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
                 {% for producto in alcohol %}
-                <div class="producto">
+                <div class="producto" data-tooltip="{{ producto.prod_descripcion }}">
                     <div class="contenedor_img_prod">
                         <img src="{{ producto.prod_imagen.url }}" alt="imagen producto" class="img_prod" />
                     </div>
 
                     <div class="informacion_producto">
+                        <h6 class="categoria_prod">{{ producto.prod_categoria }}</h6>
                         <h5 class="nombre_prod">{{ producto.prod_nombre|title }}</h5>
-                        <h6 class="extra_prod">{{ producto.prod_descripcion }}</h6>
                         <p class="precio_prod">S/.{{ producto.prod_precio }}</p>
                         <p class="precio_desc">S/.
                             <span id="{{ producto.id }}"></span>
@@ -177,16 +237,26 @@
                                 }
                                 document.getElementById("{{ producto.id }}").innerHTML = precio_inflado({{ producto.prod_precio }})
                             </script>
+                            <svg width="47" height="20" viewBox="0 0 47 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svgicon svgicon-price-tag">
+                                <path d="M47 16C47 18.2091 45.2091 20 43 20L10.0715 20C8.96282 20 7.90383 19.5398 7.14732 18.7293L1.54732 12.7293C0.11295 11.1924 0.11295 8.80755 1.54732 7.27072L7.14733 1.27072C7.90383 0.460183 8.96282 -3.32532e-06 10.0715 -3.22839e-06L43 -3.49691e-07C45.2091 -1.56562e-07 47 1.79086 47 4L47 16Z" fill="#019FE1">
+                                </path>
+                            </svg>
+                            <span class="porcentaje">-10%</span>
                         </p>
                     </div>
 
                     <div class="envio_prod">
                         <img src="{% static 'image/tienda.svg' %}" alt="tienda" class="lugar_prod icon" />
                         <img src="{% static 'image/carrito.svg' %}" alt="carrito" class="delivery_prod icon" />
+                        <img src="{% static 'image/delivery.svg' %}" alt="delivery" class="delivery_prod icon" />
                     </div>
 
                     <div class="btn-container">
-                        <button class="custom-btn btn-compra" href='#'><span>Comprar</span></button>
+                        <div class="wrapp-btn">
+                            <form action="/producto_unidad/{{ producto.id }}">
+                                <button class="custom-btn btn-compra"><span>Comprar</span></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}

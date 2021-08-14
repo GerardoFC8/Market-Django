@@ -1,6 +1,7 @@
 from django.db import models
+
+
 # Create your models here.
-# Usuario(usuario_nombre="Jamir", usuario_estado="1", usuario_correo="correo@gmail.com", usuario_clave="123", usuario_fecha="2021-08-01")
 
 class Producto(models.Model):
     prod_nombre = models.CharField(max_length=500)
