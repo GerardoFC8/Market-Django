@@ -6,41 +6,52 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Q
 
+
 # Create your views here.
 
 def index(request):
-    
-    embutidos = Producto.objects.filter(prod_categoria = 'EMBUTIDOS Y LACTEOS')
-    snacks = Producto.objects.filter(prod_categoria = 'SNACKS Y PIQUEOS')
-    confiteria = Producto.objects.filter(prod_categoria = 'CONFITERIA')
-    congelados = Producto.objects.filter(prod_categoria = 'CONGELADOS')
-    alcohol = Producto.objects.filter(prod_categoria = 'BEBIDAS ALCOHOLICAS')
+    embutidos = Producto.objects.filter(prod_categoria='EMBUTIDOS Y LACTEOS')
+    snacks = Producto.objects.filter(prod_categoria='SNACKS Y PIQUEOS')
+    confiteria = Producto.objects.filter(prod_categoria='CONFITERIA')
+    congelados = Producto.objects.filter(prod_categoria='CONGELADOS')
+    alcohol = Producto.objects.filter(prod_categoria='BEBIDAS ALCOHOLICAS')
 
     productos = {"embutidos": embutidos,
-                "snacks": snacks,
-                "confiteria": confiteria,
-                "congelados": congelados,
-                "alcohol": alcohol}
-    return render(request, "mainCRUD/index.html", productos) 
+                 "snacks": snacks,
+                 "confiteria": confiteria,
+                 "congelados": congelados,
+                 "alcohol": alcohol}
+    return render(request, "mainCRUD/index.html", productos)
+
 
 def search(request):
     queryset = request.GET.get("search")
+    result_set_len = 0
     if queryset:
         result_set = Producto.objects.filter(
-            Q(prod_nombre__icontains = queryset) | 
-            Q(prod_descripcion__icontains = queryset) |
-            Q(prod_categoria__icontains = queryset)
+            Q(prod_nombre__icontains=queryset) |
+            Q(prod_descripcion__icontains=queryset) |
+            Q(prod_categoria__icontains=queryset)
         ).distinct()
+        result_set_len = result_set.count()
     else:
-        result_set = { }
+        result_set = {}
 
-    productos = {"result_set": result_set}
-    return render(request, "mainCRUD/search.html", productos) 
+    productos = {"result_set": result_set, "queryset": queryset, "result_set_len": result_set_len}
+    return render(request, "mainCRUD/search.html", productos)
+
 
 def producto(request):
     prod = Producto.objects.all()
     context = {"list_producto": prod}
     return render(request, "mainCRUD/producto.html", context)
+
+
+def producto_unidad(request, id_producto):
+    producto = Producto.objects.get(id=id_producto)
+    context = {"producto": producto}
+    return render(request, "mainCRUD/producto_unidad.html", context)
+
 
 @permission_required('mainCRUD.add_producto')
 def agregar_prod(request):
