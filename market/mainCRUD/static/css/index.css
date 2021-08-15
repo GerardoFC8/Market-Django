@@ -4,7 +4,6 @@
 
 .bloque_seccion .wrap{
     width: 100%;
-    /*margin: 0 auto;*/
 }
 
 .load-container{
@@ -59,9 +58,9 @@
     z-index: 1;
     top: -0.25rem;
     left: 50%;
-    transform: translateX(50%) translateY(100px) scale(var(--scale));
+    transform: translateX(-50%) translateY(500px) scale(var(--scale));
     transition: 120ms transform;
-    transform-origin: left;
+    transform-origin: top center;
 }
 
 .producto::before{
@@ -318,4 +317,11 @@
 .travolta{
     margin: auto;
     width: 300%;
+}
+
+@media all and (max-width: 1000px){
+
+    .producto::before{
+         display: none;
+    }
 }
