@@ -1,5 +1,6 @@
 {% extends "mainCRUD/head.html" %}
 {% load static %}
+
 {% block body %}
     {#================= SCROLL TO TOP =================#}
     <button class="scroll_top"><img src="{% static 'image/up.png '%}" alt="up"></button>
@@ -15,13 +16,8 @@
         });
     </script>
 
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <link rel="stylesheet" href="{% block estilo %} {% endblock %}">
-    </head>
-
-    <body>  
     {#================= SIDEBAR =================#}
-    <nav class="sidebar-container">
+    <nav class="sidebar-container" style="display: none;">
         <ul class="sidebar">
             <li class="nav-item-logo">
                 <div class="logo">
@@ -89,7 +85,6 @@
     <main class="contenido">
         {% block cuerpo %}
             base
-            <img src="{% static 'image/logo.png'%}" alt="logo">
         {% endblock %}
     </main>
 

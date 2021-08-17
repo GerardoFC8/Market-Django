@@ -104,17 +104,12 @@ def register(request):
     return render(request, 'mainCRUD/admin/register.html', context)
 
 
-def barra_nav(request):
-    return render(request, 'mainCRUD/barra_de_navegacion.html', {})
-
 def correo(request):
     context = {
         'form': CorreoForm()
     }
 
     if request.method == 'POST':
-
-        
 
         form = CorreoForm(request.POST)
         if form.is_valid():
@@ -123,4 +118,3 @@ def correo(request):
         else:
             context["form"] = form
     return render(request, 'mainCRUD/correo.html', context)
-

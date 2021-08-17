@@ -54,4 +54,7 @@
     .nav-categorias .botones button{
         width: 150px;
     }
+    .nav-categorias p{
+        display: none;
+    }
 }

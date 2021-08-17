@@ -3,6 +3,7 @@
 :root{
 	font-family: 'Roboto', sans-serif !important;
     --base: #060930;
+    --nav_base: #333456;
     --color_texto: #b0d3ff;
     --blanco: #FFFFFB;
     --botones: #f34981;

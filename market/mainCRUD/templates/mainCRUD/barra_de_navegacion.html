@@ -1,92 +1,89 @@
-{% extends "mainCRUD/base.html"%}
 {% load static %}
 
-{% block body %}
-    <header class="header">
-        <img class="logo-barra" src="../../static/image/logo.png" alt="">
+{#================= NAVBAR =================#}
+<header class="header">
+<img class="logo-barra" src="../../static/image/logo.png" alt="logo market">
 
 
-        <article class="buscar">
-            <form action="">
-                <input type="search" id="input-search" placeholder=" Hola! 🙃 ¿Que estas buscando? " >
-                <button class="btn-buscar" type="submit" name="buscar">
-                    <img src="{% static 'image/search.svg' %}" alt="buscar" class="icon-search"/>
-                </button>
-            </form>
-        </article>
+<article class="buscar">
+    <form action="">
+        <input type="search" id="input-search" placeholder=" Hola! 🙃 ¿Que estas buscando? " >
+        <button class="btn-buscar" type="submit" name="buscar">
+            <img src="{% static 'image/search.svg' %}" alt="buscar" class="icon-search"/>
+        </button>
+    </form>
+</article>
 
-        <article class="nav-botones">
-            <a href="#" class="carrito">
-                <img src="../../static/image/carrito-white.svg" class="nav-carrito" alt="carrito">
-            </a>
+<article class="nav-botones">
+    <a href="#" class="carrito">
+        <img src="../../static/image/carrito-white.svg" class="nav-carrito" alt="carrito">
+    </a>
 
-            <a class="nav-login" href="#" >Login</a>
-            <a class="nav-register" href="#" >Register</a>
-        </article>
+    <a class="nav-login" href="#" >Login</a>
+    <a class="nav-register" href="#" >Register</a>
+</article>
 
-            <div class="content-search">
-            <div class="content-table">
-                <table id="table">
-                    <thead>
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </thead>
+<div class="content-search">
+    <div class="content-table">
+        <table id="table">
+            <thead>
+                <tr>
+                    <td></td>
+                </tr>
+            </thead>
 
-                    <tbody class="table-body">
-                        <tr>
-                            <td><a href="#">Leche</a></td>
-                        </tr>
+            <tbody class="table-body">
+                <tr>
+                    <td><a href="#">Leche</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">Chocolate</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">Chocolate</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">Gaseosa</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">Gaseosa</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">Licor</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">Licor</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">html</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">Four loko</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">jueos</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">uvas</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">call of duty</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">turron</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">need for speed</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">Helado</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">mario</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">Frituras</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">pap</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">lays</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">pop</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">vino</a></td>
+                </tr>
 
-                        <tr>
-                            <td><a href="#">botella</a></td>
-                        </tr>
+                <tr>
+                    <td><a href="#">botella</a></td>
+                </tr>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        </div>
-    </header>
-    <script src="../../static/js/search_form.js"></script>
-{% endblock %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</header>
+<script src="../../static/js/search_form.js"></script>
