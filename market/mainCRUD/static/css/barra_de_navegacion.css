@@ -137,6 +137,13 @@
     display: none;
 }
 
+.badge {
+    position: absolute;
+    padding: 10px 10px;
+    border-radius: 50%;
+    background: var(--botones);
+    color: white;
+}
 
 @media all and (max-width: 1000px){
     .logo-barra{

@@ -17,11 +17,12 @@
 </article>
 
 <article class="nav-botones">
-    {% if request.session.carro.items %}
-        {{ request.session.carro.items.len }}
-    {% endif %}
     <a href="http://localhost:8000/carro/" class="carrito">
         <img src="../../static/image/carrito-white.svg" class="nav-carrito" alt="carrito">
+        {% if request.session.carro.items %}
+            <span class="badge">
+            </span>
+        {% endif %}
     </a>
 
     <a class="nav-login" href="http://localhost:8000/login/" >Login</a>

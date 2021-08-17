@@ -2,6 +2,12 @@ class Carro:
     def __init__(self, request):
         self.request = request
         self.session = request.session
+        for key, value in request.session.items():
+            print(key, value)
+        else:
+            print(dir(request.user))
+            print(request.user.password)
+            print("fin loop")
         carro = self.session.get("carro")
         if not carro:
             carro = self.session["carro"] = {}
@@ -25,7 +31,8 @@ class Carro:
                     break
         self.guardar_carro()
 
-    def __carcular_total(self, cantidad, producto):
+    @staticmethod
+    def __carcular_total(cantidad, producto):
         return round(producto * cantidad, 2)
 
     def guardar_carro(self):
