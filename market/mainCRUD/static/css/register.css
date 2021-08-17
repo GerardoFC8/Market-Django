@@ -6,7 +6,7 @@ li{
 .container-all{
 	width: 70%;
 	max-width: 800px;
-	margin: 0 auto auto auto;
+	margin: 50px auto auto auto;
 	display: flex;
 }
 

@@ -10,8 +10,14 @@
 }
 
 .botonera input {
-    border: none;
+    border: 1.5px solid var(--producto);
     transition: all 500ms ease;
+    cursor: pointer;
+}
+
+.botonera input:hover{
+    background: var(--producto);
+    border: 1.5px solid var(--botones);
 }
 
 input::-webkit-outer-spin-button,
