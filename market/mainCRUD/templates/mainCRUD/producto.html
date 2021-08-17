@@ -9,6 +9,7 @@
             <thead>
                 <tr>
                     <th>Producto</th>
+                    <th>Categoria</th>
                     <th>Precio</th>
                     <th>Opcion</th>
                 </tr>
@@ -17,6 +18,7 @@
                 {% for producto in list_producto %}
                 <tr>
                     <th>{{ producto.prod_nombre }}</th>
+                    <th>{{ producto.prod_categoria }}</th>
                     <th>{{ producto.prod_precio }}</th>
                     <th>
                         <a href="{% url 'editar_producto' producto.id %}">
