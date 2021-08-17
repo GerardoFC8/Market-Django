@@ -32,13 +32,12 @@
                 <div class="botonera">
                     <h3 id="titulo_w_unidades"> UNIDADES disponibles: </h3>
 
-                    <form>
+                    <form action="/carro/agregar/{{ producto.id }}" method="GET">
                         <div class="boton_unidades">
                             <div class="boton_disminuir_cant">-</div>
                                 <input type="text" name="unidades" class="cantidad_cant" value="1">
                             <div class="boton_aumentar_cant">+</div>
                         </div>
-
 
                         <script>
                             let cantidad_stock = 10;
@@ -66,12 +65,17 @@
                         </script>
                     <!--  ........................................  -->
 
-                        <input type="hidden" name="producto" value="<?=$codigo_producto?>"/>
-                        <input type="submit" name="btn_agregar" id="btn_agregar" value="Agregar"/>
+                    <input type="submit" value="agregar">
                     </form>
                 </div>
             </div>
         </section>
         <!-- =================================================================================== -->
-    </div>
+        <div>
+
+            {% include "carro/widget.html" %}
+
+        </div>
+   </div>
+
 {% endblock %}

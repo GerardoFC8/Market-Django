@@ -16,5 +16,5 @@ urlpatterns = [
     path("search/", views.search, name="search"),
     path("correo/", views.correo, name="correo"),
     path("producto_unidad/<int:id_producto>", views.producto_unidad, name="producto_unidad"),
-
+    path("", views.producto_unidad, name="producto_unidad"),
 ]
