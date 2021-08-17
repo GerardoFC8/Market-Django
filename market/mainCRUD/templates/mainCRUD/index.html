@@ -3,7 +3,9 @@
 {% block estilo %} {% static 'css/index.css' %} {% endblock %}
 
 {% block header %}
-{% include "mainCRUD/barra_de_navegacion.html" %}
+    {% if not request.user.is_superuser %}
+        {% include "mainCRUD/barra_de_navegacion.html" %}
+    {% endif %}
 {% endblock %}
 
 {% block cuerpo %}

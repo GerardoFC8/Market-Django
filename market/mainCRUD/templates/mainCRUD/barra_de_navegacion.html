@@ -8,10 +8,10 @@
 
 
 <article class="buscar">
-    <form action="">
-        <input type="search" id="input-search" placeholder=" Hola! 🙃 ¿Que estas buscando? " >
-        <button class="btn-buscar" type="submit" name="buscar">
-            <img src="{% static 'image/search.svg' %}" alt="buscar" class="icon-search"/>
+    <form action="/search" method="get">
+        <input type="search" id="input-search" placeholder=" Hola! 🙃 ¿Que estas buscando? " name="search">
+        <button class="btn-buscar" type="text" value="{{ request.GET.search }}">
+            <img src="{% static 'image/search.svg' %}" alt="search img" class="icon-search"/>
         </button>
     </form>
 </article>
@@ -24,8 +24,13 @@
             </span>
         {% endif %}
     </a>
+    {% if not request.user.is_authenticated %}
+        <a class="nav-login" href="http://localhost:8000/login/" >Login</a>
+    {% endif %}
 
-    <a class="nav-login" href="http://localhost:8000/login/" >Login</a>
+    {% if request.user.is_authenticated %}
+        <a class="nav-login" href="http://localhost:8000/logout/" >Logout</a>
+    {% endif %}
     <a class="nav-register" href="http://localhost:8000/register/" >Registrarse</a>
 </article>
 
@@ -40,51 +45,51 @@
 
             <tbody class="table-body">
                 <tr>
-                    <td><a href="#">Leche</a></td>
+                    <td><a href="http://localhost:8000/search/?search=Leche">Leche</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">Chocolate</a></td>
+                    <td><a href="http://localhost:8000/search/?search=Chocolate">Chocolate</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">Gaseosa</a></td>
+                    <td><a href="http://localhost:8000/search/?search=Gaseosa">Gaseosa</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">Licor</a></td>
+                    <td><a href="http://localhost:8000/search/?search=Licor">Licor</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">Four loko</a></td>
+                    <td><a href="http://localhost:8000/search/?search=Four+loko">Four loko</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">uvas</a></td>
+                    <td><a href="http://localhost:8000/search/?search=uvas">uvas</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">turron</a></td>
+                    <td><a href="http://localhost:8000/search/?search=turron">turron</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">Helado</a></td>
+                    <td><a href="http://localhost:8000/search/?search=Helado">Helado</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">Frituras</a></td>
+                    <td><a href="http://localhost:8000/search/?search=Frituras">Frituras</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">lays</a></td>
+                    <td><a href="http://localhost:8000/search/?search=Lays">lays</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">vino</a></td>
+                    <td><a href="http://localhost:8000/search/?search=vino">vino</a></td>
                 </tr>
 
                 <tr>
-                    <td><a href="#">botella</a></td>
+                    <td><a href="http://localhost:8000/search/?search=botella">botella</a></td>
                 </tr>
 
             </tbody>

@@ -17,7 +17,9 @@
     </script>
 
     {#================= SIDEBAR =================#}
-    <nav class="sidebar-container" style="display: ;">
+    {% if request.user.is_superuser %}
+        <nav class="sidebar-container">
+
         <ul class="sidebar">
             <li class="nav-item-logo">
                 <div class="logo">
@@ -83,13 +85,17 @@
         </ul>
     </nav>
 
+        {#================= CONTENIDO =================#}
+        <main class="contenido">
+    {% else %}
     {#================= CONTENIDO =================#}
-    <main class="contenido">
+    <main class="contenido" style="margin-inline: 5rem; !important;">
+
+    {% endif %}
         {% block cuerpo %}
             base
         {% endblock %}
     </main>
-
     {#================= FOOTER =================#}
     <footer class="footer">
         {% block footer %}
