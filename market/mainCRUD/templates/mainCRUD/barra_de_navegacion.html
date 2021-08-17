@@ -31,6 +31,7 @@
 
     {% if request.user.is_authenticated %}
         <a class="nav-login" href="http://localhost:8000/logout/" >Logout</a>
+        <p style="text-transform: uppercase;font-weight: bold;, text-align: center;font-size: 1rem; padding-inline: 10px">{{ user.username }}</p>
     {% endif %}
 </article>
 

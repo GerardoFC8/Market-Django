@@ -66,6 +66,10 @@ button[type="submit"]:hover{
 }
 
 /*lado derecho*/
+.text-desc{
+	display: grid;
+	place-items: center;
+}
 
 .container-texto{
 	width: 80%;
@@ -87,8 +91,6 @@ button[type="submit"]:hover{
 }
 
 .text-description{
-	position: relative;
-	top: 120px;
 	color: white;
 	font-size: 16px;
 	font-weight: 200;
