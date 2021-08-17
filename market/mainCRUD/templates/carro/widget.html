@@ -26,11 +26,11 @@
                             <td>{{value.nombre}}</td>
                             <td>{{value.cantidad}}</td>
                             <td>
-{#                                <form>#}
-{#                                <a href="{% url 'carro:agregar' value.id_producto cantidad %}">+</a>#}
-{#                                <a href="{% url 'carro:restar' value.id_producto cantidad %}">-</a>#}
+                                <form>
+                                <a href="{% url 'carro:agregar' value.id_producto  %}">+</a>
+                                <a href="{% url 'carro:restar' value.id_producto  %}">-</a>
                                 S/.{{ value.precio }}
-{#                                </form>#}
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}
