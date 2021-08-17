@@ -51,8 +51,8 @@ def producto(request):
 def producto_unidad(request, id_producto):
     producto = Producto.objects.get(id=id_producto)
     context = {"producto": producto}
-
     return render(request, "mainCRUD/producto_unidad.html", context)
+
 
 @permission_required('mainCRUD.add_producto')
 def agregar_prod(request):

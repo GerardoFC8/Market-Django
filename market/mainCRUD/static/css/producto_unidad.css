@@ -25,6 +25,22 @@ input::-webkit-inner-spin-button {
   -moz-appearance: textfield;
 }
 
+.carro-agregar-container{
+    display: grid;
+}
+
+.agregar-unidad{
+    padding: 12px;
+    border-radius: 8px;
+    background-color: var(--botones);
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10% 20% 0 20%;
+}
+
 .contenedor_imagen{
     margin-bottom: 20px;
     border-radius: 10px;

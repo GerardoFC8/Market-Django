@@ -153,6 +153,10 @@ main{
     background-color: #b10450;
 }
 
+.logo-index, .logo-index:hover, .logo-index:active{
+    background: var(--nav_base) !important;
+}
+
 .sidebar-container .logo{
     /*display: grid;*/
     /*place-items: center;*/

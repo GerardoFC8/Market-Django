@@ -17,12 +17,14 @@
     </script>
 
     {#================= SIDEBAR =================#}
-    <nav class="sidebar-container" style="display: none;">
+    <nav class="sidebar-container" style="display: ;">
         <ul class="sidebar">
             <li class="nav-item-logo">
                 <div class="logo">
-                    <img class="logo-main" src="{% static 'image/logo_no_text.png'%}" alt="logo sin texto">
-                    <img class="logo-imagen" src="{% static 'image/logo.png'%}" alt="logo" width="200px">
+                    <a href="http://localhost:8000" class="logo-index">
+                        <img class="logo-main" src="{% static 'image/logo_no_text.png'%}" alt="logo sin texto">
+                        <img class="logo-imagen" src="{% static 'image/logo.png'%}" alt="logo" width="200px">
+                    </a>
                 </div>
             </li>
 

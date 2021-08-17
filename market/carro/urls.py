@@ -5,6 +5,7 @@ from . import views
 app_name = "carro"
 # /carro/agregar/14?unidades=5
 urlpatterns = [
+    path('', views.index_carrito, name='index carro'),
     path('agregar/<int:id_producto>', views.agregar_producto, name='agregar'),
     path('eliminar/<int:id_producto>/', views.eliminar_producto, name='eliminar'),
     path('restar/<int:id_producto>/', views.restar_producto, name='restar'),

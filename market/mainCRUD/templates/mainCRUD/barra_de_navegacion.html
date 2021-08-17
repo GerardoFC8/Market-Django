@@ -2,7 +2,9 @@
 
 {#================= NAVBAR =================#}
 <header class="header">
-<img class="logo-barra" src="../../static/image/logo.png" alt="logo market">
+    <a href="http://localhost:8000">
+        <img class="logo-barra" src="../../static/image/logo.png" alt="logo market">
+    </a>
 
 
 <article class="buscar">
@@ -15,12 +17,15 @@
 </article>
 
 <article class="nav-botones">
-    <a href="#" class="carrito">
+    {% if request.session.carro.items %}
+        {{ request.session.carro.items.len }}
+    {% endif %}
+    <a href="http://localhost:8000/carro/" class="carrito">
         <img src="../../static/image/carrito-white.svg" class="nav-carrito" alt="carrito">
     </a>
 
-    <a class="nav-login" href="#" >Login</a>
-    <a class="nav-register" href="#" >Register</a>
+    <a class="nav-login" href="http://localhost:8000/login/" >Login</a>
+    <a class="nav-register" href="http://localhost:8000/register/" >Registrarse</a>
 </article>
 
 <div class="content-search">

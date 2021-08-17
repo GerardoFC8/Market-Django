@@ -5,6 +5,9 @@ from django.shortcuts import redirect
 
 
 # Create your views here.
+def index_carrito(request):
+    return render(request, "carro/widget.html")
+
 
 def agregar_producto(request, id_producto):
     cantidad = request.GET.get('unidades')

@@ -1,0 +1,60 @@
+.carrito-container{
+    display: grid;
+    margin: 10%;
+    place-items: center;
+}
+
+.carrito-container table{
+  margin-top: 20px;
+  font-size: 1rem;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.carrito-container table tr th a{
+  color: var(--blanco);
+  text-decoration: none;
+  text-transform: capitalize;
+  border-radius: 5px;
+  transition: all 200ms ease;
+  font-weight: 600;
+  padding: 0 1rem 0 1rem;
+  margin: 10%;
+}
+
+.carrito-container table tr th a:hover{
+  background-color: var(--botones);
+}
+
+.carrito-container thead {
+  box-shadow: 0 7px 26px 0 #000000;
+  font-size: 1.5rem;
+}
+
+.carrito-container table tr{
+  border-top: 1px solid var(--producto);
+  border-bottom: 1px solid var(--producto)
+}
+
+.carrito-container table tr:nth-child(even) {
+  background: var(--producto_hover);
+}
+
+.carrito-container table tr:nth-child(odd) {
+  background: var(--producto);
+}
+.carrito-container a{
+    color: var(--blanco);
+    background: var(--producto);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 10px;
+    transition: all 200ms ease;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.carrito-container a:hover{
+    background: var(--producto_hover);
+}

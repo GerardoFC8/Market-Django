@@ -10,7 +10,7 @@ class Carro:
 
     def agregar(self, producto, cantidad):
         if str(producto.id) not in self.carro.keys():
-            self.carro[producto.id]={
+            self.carro[producto.id] = {
                 "id_producto": producto.id,
                 "nombre": producto.prod_nombre,
                 "precio": str(self.__carcular_total(float(cantidad), float(producto.prod_precio))),
@@ -20,7 +20,7 @@ class Carro:
         else:
             for key, value in self.carro.items():
                 if key == str(producto.id):
-                    value["cantidad"] = value["cantidad"] + 1
+                    value["cantidad"] = int(value["cantidad"]) + 1
                     value["precio"] = round(value["cantidad"] * producto.prod_precio, 2)
                     break
         self.guardar_carro()
@@ -42,7 +42,7 @@ class Carro:
         for key, value in self.carro.items():
             if key == str(producto.id):
                 value["cantidad"] = value["cantidad"] - 1
-                value["precio"]=float(value["precio"])-producto.prod_precio
+                value["precio"] = float(value["precio"]) - producto.prod_precio
                 if value["cantidad"] < 1:
                     self.eliminar(producto)
                 break
