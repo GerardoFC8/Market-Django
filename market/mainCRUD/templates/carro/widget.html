@@ -1,65 +1,14 @@
-{% extends "mainCRUD/head.html" %}
+{% extends "mainCRUD/base.html" %}
 {% load static %}
 {% block estilo %} {% static 'css/carrito.css' %} {% endblock %}
 {% block header %}
     {% if not request.user.is_superuser %}
         {% include "mainCRUD/barra_de_navegacion.html" %}
     {% endif %}
-        {% if request.user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <img class="img-profile" src="{% static 'image/profile.png'%}" alt="profile">
-                    <span class="link-text">{{ user.username }}</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/home" id="btn-home">
-                    <img class="img-home" src="{% static 'image/home.png' %}" alt="home">
-                    <span class="link-text">Home</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/producto" id="btn-producto" >
-                    <img class="img-producto" src="{% static 'image/productos.png' %}" alt="productos">
-                    <span class="link-text">Productos</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/carro/">
-                    <img class="carrito-icon" src="{% static 'image/carrito-white.svg' %}" alt="profile" width="50px">
-                    <span class="link-text">Carrito</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/logout" id="btn-login" >
-                    <img class="img-logout" src="{% static 'image/login.png' %}" alt="logout">
-                    <span class="link-text">Logout</span>
-                </a>
-            </li>
-
-        {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="/home" id="btn-home">
-                    <img class="img-home" src="{% static 'image/home.png' %}" alt="home">
-                    <span class="link-text">Home</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/login" id="btn-login" >
-                    <img class="img-login" src="{% static 'image/login.png' %}" alt="login">
-                    <span class="link-text">Login</span>
-                </a>
-            </li>
-    {% endif %}
 {% endblock %}
-{% block body %}
+{% block cuerpo %}
 <div class="carrito-container">
-    <table border="1">
+    <table>
             <thead>
                 <tr>
                     <th colspan="3">
@@ -76,14 +25,16 @@
                 {% if request.session.carro.items %}
                     {% for key, value in request.session.carro.items %}
                         <tr>
-                            <td>{{value.nombre}}</td>
-                            <td>{{value.cantidad}}</td>
+                            <td style="font-size: 1.5rem;">{{value.nombre}}</td>
+                            <td class="table-cantidad">{{value.cantidad}}</td>
                             <td>
-                                <form>
-                                <a href="{% url 'carro:agregar' value.id_producto  %}">+</a>
-                                <a href="{% url 'carro:restar' value.id_producto  %}">-</a>
-                                S/.{{ value.precio }}
-                                </form>
+                                <div class="ag-res">
+                                    <form>
+                                        <a href="{% url 'carro:agregar' value.id_producto  %}">+</a>
+                                        <a href="{% url 'carro:restar' value.id_producto  %}">-</a>
+                                        S/.{{ value.precio }}
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     {% endfor %}
@@ -99,7 +50,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">Total: S/.{{ importe_total_carro }}</td>
+                    <td colspan="3" style="font-size: 1.5rem;">Total: S/.{{ importe_total_carro }}</td>
                 </tr>
             </tfoot>
     </table>
