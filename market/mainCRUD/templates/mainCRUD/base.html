@@ -61,11 +61,19 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="/carro/">
+                        <img class="carrito-icon" src="{% static 'image/carrito-white.svg' %}" alt="profile" width="50px">
+                        <span class="link-text">Carrito</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="/logout" id="btn-login" >
                         <img class="img-logout" src="{% static 'image/login.png' %}" alt="logout">
                         <span class="link-text">Logout</span>
                     </a>
                 </li>
+
 
             {% else %}
                 <li class="nav-item">
@@ -81,7 +89,7 @@
                         <span class="link-text">Login</span>
                     </a>
                 </li>
-            {% endif %}
+        {% endif %}
         </ul>
     </nav>
 
