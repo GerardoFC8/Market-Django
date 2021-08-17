@@ -1,0 +1,57 @@
+.nav-categorias{
+    width: 100%;
+    padding: 1rem 0 2rem 0;
+}
+
+.nav-categorias div h1{
+    font-size: 30px;
+}
+.nav-categorias div p{
+    font-size: 15px;
+    padding: 0 0 0 1rem;
+}
+
+.nav-categorias div p button{
+    text-decoration: underline;
+}
+
+.nav-categorias .botones {
+    display: flex;
+    margin: 40px 0 0 0;
+    padding: 10px 0 10px 0;
+    width: 600px;
+}
+
+.nav-categorias .botones img{
+    width: 110px;
+    border-radius: 5px;
+}
+
+
+.nav-categorias .botones button{
+    color: var(--blanco);
+    background-color: var(--base);
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: none;
+}
+
+.nav-categorias .botones button:hover{
+    background-color: var(--producto_hover);
+}
+
+.nav-categorias .botones button span{
+    font-family: 'Roboto', sans-serif !important;
+}
+
+@media all and (max-width:880px){
+    .nav-categorias .botones img{
+        display: none;
+    }
+    .nav-categorias .botones {
+        flex-direction: column;
+    }
+    .nav-categorias .botones button{
+        width: 150px;
+    }
+}

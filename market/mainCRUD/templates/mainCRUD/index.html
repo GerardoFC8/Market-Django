@@ -21,10 +21,54 @@
             fade(document.getElementById("load-video"));
         </script>
     </div>
+    {#================= CATEGORIAS =================#}
+    <nav class="nav-categorias">
+        <div>
+            <h1>TODO MARKET EN UN CLICK</h1>
+            <p>
+                La calidad de siempre en carnes, abarrotes, frutas, verduras,
+                limpieza y más a precios bajos todos los días. Conoce todo
+                <a>Supermercado</a>
+            </p>
+        </div>
+        <div class="botones">
+            <button data-link="seccion1" class="scrollto" id="btn-embutido" href="#">
+                <img src="{% static "image/categoria_embutidos.jpg"%}" alt="embutidos">
+                <span>EMBUTIDOS Y LACTEOS</span>
+            </button>
+            <button data-link="seccion2" class="scrollto" id="btn-snacks" href="#">
+                <img src="{% static "image/categoria_piqueos.jpg"%}" alt="snacks">
+                <span>SNACKS Y PIQUEOS</span>
+            </button>
+            <button data-link="seccion3" class="scrollto" id="btn-confiteria" href="#">
+                <img src="{% static "image/categoria_confiteria.jpg"%}" alt="confiteria">
+                <span>CONFITERIA</span>
+            </button>
+            <button data-link="seccion4" class="scrollto" id="btn-congelados" href="#">
+                <img src="{% static "image/categoria_congelados.jpg"%}" alt="congelados">
+                <span>CONGELADOS</span>
+            </button>
+            <button data-link="seccion5" class="scrollto" id="btn-bebidas" href="#">
+                <img src="{% static "image/categoria_bebidas.jpg"%}" alt="bebidas">
+                <span>BEBIDAS ALCOHOLICAS</span>
+            </button>
+        </div>
+    </nav>
+    <script>
+        const links = document.querySelectorAll('.scrollto');
 
+        links.forEach((item) => {
+            item.addEventListener('click', function (){
+                const adonde = document.getElementById(item.getAttribute("data-link"))
+                adonde.scrollIntoView({behavior:"smooth", block:"start"})
+            })
+
+        });
+
+    </script>
     <section class="bloque_seccion">
         <div class="wrap">
-            <h1 class="titulo_seccion">EMBUTIDOS Y LACTEOS</h1>
+            <h1 class="titulo_seccion" id="seccion1">EMBUTIDOS Y LACTEOS</h1>
 
             <div class="contenedor_productos">
             <!-- ========================= Producto ========================= -->
@@ -74,7 +118,7 @@
             </div>
 
 
-            <h1 class="titulo_seccion">SNACKS Y PIQUEOS</h1>
+            <h1 class="titulo_seccion" id="seccion2">SNACKS Y PIQUEOS</h1>
 
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
@@ -121,7 +165,7 @@
                 {% endfor %}
             </div>
 
-            <h1 class="titulo_seccion">CONFITERIA</h1>
+            <h1 class="titulo_seccion" id="seccion3">CONFITERIA</h1>
 
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
@@ -168,7 +212,7 @@
                 {% endfor %}
             </div>
 
-            <h1 class="titulo_seccion">CONGELADOS</h1>
+            <h1 class="titulo_seccion" id="seccion4">CONGELADOS</h1>
 
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">
@@ -215,7 +259,7 @@
                 {% endfor %}
             </div>
 
-            <h1 class="titulo_seccion">BEBIDAS ALCOHOLICAS</h1>
+            <h1 class="titulo_seccion" id="seccion5">BEBIDAS ALCOHOLICAS</h1>
 
 {#            <!-- ========================= Producto ========================= -->#}
             <div class="contenedor_productos">

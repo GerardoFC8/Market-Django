@@ -103,6 +103,10 @@ def register(request):
     context = {'form': form}
     return render(request, 'mainCRUD/admin/register.html', context)
 
+
+def barra_nav(request):
+    return render(request, 'mainCRUD/barra_de_navegacion.html', {})
+
 def correo(request):
     context = {
         'form': CorreoForm()

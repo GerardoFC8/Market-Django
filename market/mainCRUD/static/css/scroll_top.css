@@ -1,0 +1,34 @@
+.scroll_top{
+    position: fixed;
+    right: 10px;
+    bottom: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--botones);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    color: var(--blanco);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 3;
+    margin: 10px;
+}
+
+.scroll_top:active{
+    background-color: #b10450;
+}
+
+.scroll_top img {
+    filter: invert(100%);
+}
+
+@media all and (max-width:800px){
+    .scroll_top{
+        width: 50px;
+        height: 50px;
+    }
+    .scroll_top img{
+        width: 40px;
+    }
+}

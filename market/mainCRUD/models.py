@@ -13,7 +13,6 @@ class Producto(models.Model):
     def __str__(self):
         return self.prod_nombre
 
-
 class Correo(models.Model):
     nombre = models.CharField(max_length = 100)
     correo = models.EmailField()
