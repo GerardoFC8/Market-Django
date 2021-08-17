@@ -2,7 +2,11 @@
 {% block titulo %} Producto - {{ producto.prod_nombre }} {% endblock %}
 {% load static %}
 {% block estilo %} {% static 'css/producto_unidad.css' %} {% endblock %}
-
+{% block header %}
+    {% if not request.user.is_superuser %}
+        {% include "mainCRUD/barra_de_navegacion.html" %}
+    {% endif %}
+{% endblock %}
 {% block cuerpo %}
     <div class="contenedor_general">
         <!-- ========================== Bloque MAIN ========================== -->
@@ -72,11 +76,6 @@
             </div>
         </section>
         <!-- =================================================================================== -->
-        <div>
-
-            {% include "carro/widget.html" %}
-
-        </div>
    </div>
 
 {% endblock %}

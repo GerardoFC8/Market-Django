@@ -17,7 +17,7 @@ table tr th a{
 }
 
 table tr th a:hover{
-  background-color: var(--botones);
+    text-decoration: underline;
 }
 
 thead {
