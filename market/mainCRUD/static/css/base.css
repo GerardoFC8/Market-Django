@@ -4,8 +4,7 @@
 	font-family: 'Roboto', sans-serif !important;
     --base: #060930;
     --color_texto: #b0d3ff;
-    /*--precio: ;*/
-    --blanco: #fff;
+    --blanco: #FFFFFB;
     --botones: #f34981;
     --botones_hover: #F4ABC4;
     /*--producto: #595B83;*/
@@ -19,9 +18,14 @@
     outline: none;
 }
 
+html{
+    height: 100%;
+}
+
 body{
     background-color: var(--base);
     color: var(--blanco);
+    min-height: 100vh;
 }
 
 body::-webkit-scrollbar{

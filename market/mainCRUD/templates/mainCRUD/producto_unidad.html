@@ -1,0 +1,77 @@
+{% extends "mainCRUD/base.html" %}
+{% block titulo %} Producto - {{ producto.prod_nombre }} {% endblock %}
+{% load static %}
+{% block estilo %} {% static 'css/producto_unidad.css' %} {% endblock %}
+
+{% block cuerpo %}
+    <div class="contenedor_general">
+        <!-- ========================== Bloque MAIN ========================== -->
+
+        <section class="informacion_extra">
+            <article class="imagen_mostrar">
+                <div class="imagen-container">
+                    <img alt="imagen producto" src="{{ producto.prod_imagen.url }}" class="img_mostrada" id="imagenMain"/>
+                </div>
+            </article>
+
+            <article class="contenedor_descripcion">
+                <h2 class="titulo_descripcion">descripción</h2>
+                <p>
+                    {{ producto.prod_descripcion }}
+                </p>
+            </article>
+        </section>
+
+
+        <section class="contenedor_precio">
+            <div class="precio">
+                <h2 class="titulo_producto">{{ producto.prod_nombre }}</h2>
+                <h6 class="producto_descripcion">{{ producto.prod_categoria }}</h6>
+                <h4 class="precio_producto">S/.{{ producto.prod_precio }}</h4>
+                <hr>
+                <div class="botonera">
+                    <h3 id="titulo_w_unidades"> UNIDADES disponibles: </h3>
+
+                    <form>
+                        <div class="boton_unidades">
+                            <div class="boton_disminuir_cant">-</div>
+                                <input type="text" name="unidades" class="cantidad_cant" value="1">
+                            <div class="boton_aumentar_cant">+</div>
+                        </div>
+
+
+                        <script>
+                            let cantidad_stock = 10;
+
+                            const disminuir_btn = document.querySelector('.boton_disminuir_cant');
+                            const aumentar_btn = document.querySelector('.boton_aumentar_cant');
+                            let num_cantidad_stock = document.querySelector('.cantidad_cant');
+
+
+                            disminuir_btn.addEventListener('click', () => {
+                                if(num_cantidad_stock.innerHTML <= 0){
+                                    num_cantidad_stock.value = 0;
+                                }else{
+                                    num_cantidad_stock.value = parseInt(num_cantidad_stock.value) - 1;
+                                }
+                            });
+
+                            aumentar_btn.addEventListener('click', () => {
+                                if(num_cantidad_stock.value >= cantidad_stock){
+                                    num_cantidad_stock.value = cantidad_stock;
+                                }else{
+                                    num_cantidad_stock.value = parseInt(num_cantidad_stock.value) + 1;
+                                }
+                            });
+                        </script>
+                    <!--  ........................................  -->
+
+                        <input type="hidden" name="producto" value="<?=$codigo_producto?>"/>
+                        <input type="submit" name="btn_agregar" id="btn_agregar" value="Agregar"/>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- =================================================================================== -->
+    </div>
+{% endblock %}

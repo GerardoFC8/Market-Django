@@ -1,6 +1,7 @@
 from django.db import models
+
+
 # Create your models here.
-# Usuario(usuario_nombre="Jamir", usuario_estado="1", usuario_correo="correo@gmail.com", usuario_clave="123", usuario_fecha="2021-08-01")
 
 class Producto(models.Model):
     prod_nombre = models.CharField(max_length=500)
@@ -11,7 +12,13 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.prod_nombre
-    # Producto(prod_nombre="Platano", prod_categoria="viveres", prod_precio="3.60")
 
-    # SHELL a 
-# from mainCRUD.models import Usuario, Producto
+
+class Correo(models.Model):
+    nombre = models.CharField(max_length = 100)
+    correo = models.EmailField()
+    asunto = models.CharField(max_length = 200)
+    mensaje = models.TextField()
+
+    def __str__(self):
+        return self.nombre

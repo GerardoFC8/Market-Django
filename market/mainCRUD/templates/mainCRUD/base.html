@@ -1,13 +1,19 @@
+{% extends "mainCRUD/head.html" %}
 {% load static %}
+{% block body %}
+    {#================= SCROLL TO TOP =================#}
+    <button class="scroll_top"><img src="{% static 'image/up.png '%}" alt="up"></button>
+    <script>
+        const btn_scroll = document.querySelector('.scroll_top');
 
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <link rel="shortcut icon" href="{% static 'image/icono.ico' %}">
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{% block titulo %}𝙈𝘼𝙍𝙆𝙀𝙏{% endblock %}</title>
+        btn_scroll.addEventListener('click', function (){
+            window.scrollTo({
+                top:0,
+                left:0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="{% block estilo %} {% endblock %}">
@@ -86,6 +92,29 @@
             <img src="{% static 'image/logo.png'%}" alt="logo">
         {% endblock %}
     </main>
+
+    {#================= FOOTER =================#}
+    <footer class="footer">
+        {% block footer %}
+            <div class="footer-container">
+                <div class="fila">
+                    <h3>SENATI MARKET</h3>
+                    <p class="text-justify">Proyecto hecho por el grupo
+                        <i>MARKET</i>
+                        para el desarrollo e implementación de un CRUD con el framework django.
+                    </p>
+                </div>
+                <div class="botones">
+                    <a href="#">Sobre Nosotros</a>
+                    <a href="#">Mantenimiento</a>
+                    <a href="https://github.com/Jamir-boop/market-django">GitHub</a>
+                </div>
+            <div>
+                <h5>Todos los derechos reservados</h5>
+            </div>
+            </div>
+        {% endblock %}
+    </footer>
     <script type="text/javascript" src="{% static 'js/sidebar_btn.js' %}"></script>
-    </body>
-</html>
+
+{% endblock %}
