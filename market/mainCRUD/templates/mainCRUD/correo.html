@@ -3,13 +3,13 @@
 
 {% block cuerpo %}
 
-    <form action="" method="post">
+<form action="" method="post">
 
-        {% csrf_token %}
-        {{ form.as_p }}
+    {% csrf_token %}
+    {{ form.as_p }}
 
-        <button type="submit">Enviar</button>
+    <button type="submit">Enviar</button>
 
-    </form>
+</form>
 {{ mensaje }}
 {% endblock %}

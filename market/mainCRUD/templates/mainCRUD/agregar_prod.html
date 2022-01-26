@@ -7,19 +7,17 @@
 {% block cuerpo %}
 
 <div class="container-all">
-    <div class="container-form">
-        <h1 class="titulo_Ini_Se">Agregar Producto</h1>
-       <form method="post" enctype="multipart/form-data">
-        <label>
-          {% csrf_token %}
-          {{ form.as_p }}
-        </label>
-          <button type='submit'>Guardar Cambios</button>
-        </form>
-    </div>
+  <div class="container-form">
+    <h1 class="titulo_Ini_Se">Agregar Producto</h1>
+    <form method="post" enctype="multipart/form-data">
+      <label>
+        {% csrf_token %}
+        {{ form.as_p }}
+      </label>
+      <button type='submit'>Guardar Cambios</button>
+    </form>
+  </div>
 </div>
 
 
-{% endblock cuerpo %}       
-
-
+{% endblock cuerpo %}
