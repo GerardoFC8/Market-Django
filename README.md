@@ -36,7 +36,7 @@
 <br>
 
 ## Sobre el proyecto
-<img src="screenshots/adminpanel.jpg" alt="Logo" width="100%">
+<img src="screenshots/indexuser.jpg" alt="Logo" width="100%">
 <br>
 <br>
 Este proyecto es el paso que marcó definitivamente mi inclinación hacia el desarrollo web y al framework django, la versatilidad y la abstracción de ciertos procesos repetitivos me dio la clara idea de que simplemente adoro django.
