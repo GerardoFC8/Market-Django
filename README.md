@@ -47,7 +47,8 @@ Como resultado tenemos dos UIs (interfaces de usuario) distintivas para el admin
 
 ## Ejecutar localmente
 ### **Prerequisitos**
-Se recomienda instalar las dependencias del proyecto dentro de un <a href="https://pythonbasics.org/virtualenv/">virtual environment</a>.
+- Tener instalada una version de python igual o superior a 3.9.
+- Se recomienda instalar las dependencias del proyecto dentro de un <a href="https://pythonbasics.org/virtualenv/">virtual environment</a>.
 Para instalar el modulo de python para la administracion de virtual environments globalmente ejecute.
 ```
 pip install virtualenv
